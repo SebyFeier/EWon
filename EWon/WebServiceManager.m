@@ -226,7 +226,8 @@ NSString *const WebServiceDeveloperId = @"F3E469A5-577F-1D7B-FC0C-B42C4ED11537";
 
 - (void)reachEwonWithIp:(NSString *)ip port:(NSString *)port name:(NSString *)name withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
 //    NSString *urlString = [NSString stringWithFormat:@"%@/%@/vnc/%@:%@/",[self.account stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding],ip,port];
-    NSString *urlString = [NSString stringWithFormat:@"t2mapi/get/%@/%@:%@?query&t2msession=%@",[name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], ip, port, self.sessionId];
+//    NSString *urlString = [NSString stringWithFormat:@"t2mapi/get/%@/%@:%@?query&t2msession=%@",[name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], ip, port, self.sessionId];
+    NSString *urlString = [NSString stringWithFormat:@"t2mapi/get/%@/rcgi.bin/ParamForm?AST_Param=$dtIV$ftT&t2msession=%@&t2mdeveloperid=%@", [name stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding], self.sessionId, WebServiceDeveloperId];
     NSURL *url = [NSURL URLWithString:WebServiceUrl];
     AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
     [httpClient setStringEncoding:NSUTF8StringEncoding];
