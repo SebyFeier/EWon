@@ -205,15 +205,15 @@
     
     NSDictionary *lanDevice = [[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"lanDevices"] objectAtIndex:indexPath.row];
     
-//    NSURL *url = [[WebServiceManager sharedInstance] reachEwonWithIp:lanDevice[@"ip"] port:lanDevice[@"port"] name:[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"name"]];
-    [[WebServiceManager sharedInstance] reachEwonWithIp:lanDevice[@"ip"] port:lanDevice[@"port"] name:[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"name"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-        if (dictionary) {
-            
-        }
-    }];
-//    WebViewViewController *webViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewControllerIdentifier"];
-//    webViewController.url = url;
-//    [self.navigationController pushViewController:webViewController animated:YES];
+    NSURL *url = [[WebServiceManager sharedInstance] reachEwonWithIp:lanDevice[@"ip"] port:lanDevice[@"port"] name:[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"name"]];
+//    [[WebServiceManager sharedInstance] reachEwonWithIp:lanDevice[@"ip"] port:lanDevice[@"port"] name:[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"name"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+//        if (dictionary) {
+//            
+//        }
+//    }];
+    WebViewViewController *webViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewControllerIdentifier"];
+    webViewController.url = url;
+    [self.navigationController pushViewController:webViewController animated:YES];
 }
 
 /*
