@@ -7,8 +7,12 @@
 //
 
 #import "WebViewViewController.h"
+#import "WebServiceManager.h"
+#import "MBProgressHUD.h"
 
-@interface WebViewViewController ()<UIWebViewDelegate>
+@interface WebViewViewController ()<UIWebViewDelegate> {
+    NSInteger repeat;
+}
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 
 @end
@@ -18,7 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
-    [self.webView scalesPageToFit];
+    self.webView.scalesPageToFit = YES;
+    repeat = 0;
     // Do any additional setup after loading the view.
 }
 
@@ -29,11 +34,43 @@
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     
+    
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [MBProgressHUD showHUDAddedTo:[[[UIApplication sharedApplication] delegate] window] animated:YES];
+    [self performSelector:@selector(logout) withObject:nil afterDelay:1];
+    
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('cancel').click();"];
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('userIdentity').getElementsByTagName('a')[0].click();"];
+
+}
+
+- (void)logout {
+    [MBProgressHUD hideHUDForView:[[[UIApplication sharedApplication] delegate] window] animated:YES];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
-    
+    if (repeat == 0) {
+        NSString *username = [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById('username').value = '%@'", [[WebServiceManager sharedInstance] username]]];
+        
+        [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById('password').value = '%@'", [[WebServiceManager sharedInstance] password]]];
+        if ([username length]) {
+            [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('regular').style.display = 'none';"];
+            [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('connect').click();"];
+        }
+        repeat++;
+    } else {
+        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('regular').style.display = 'inline';"];
+    }
 }
+
+
+
+//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+//    return YES;
+//}
 
 /*
 #pragma mark - Navigation

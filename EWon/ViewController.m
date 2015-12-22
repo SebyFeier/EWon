@@ -168,6 +168,17 @@
                                                                  [self presentViewController:alert animated:YES completion:nil];
                                                              }
                                                          }
+                                                     } else {
+                                                         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                                         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                                        message:[error localizedDescription]
+                                                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+                                                         
+                                                         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                               handler:^(UIAlertAction * action) {}];
+                                                         
+                                                         [alert addAction:defaultAction];
+                                                         [self presentViewController:alert animated:YES completion:nil];
                                                      }
                                                  }];
         

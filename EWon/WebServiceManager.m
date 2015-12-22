@@ -217,6 +217,11 @@ NSString *const WebServiceDeveloperId = @"F3E469A5-577F-1D7B-FC0C-B42C4ED11537";
     [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/octet-stream",@"application/json",@"text/plain", @"text/html", nil]];
     AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
         completionBlock(JSON, nil);
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"account"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"username"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"password"];
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:@"sessionId"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         NSLog(@"%@",JSON);
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
         completionBlock(JSON, error);
