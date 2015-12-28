@@ -20,11 +20,18 @@
 
 @implementation ViewController
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.accountLabel.text = @"";
+    self.usernameLabel.text = @"";
+    self.passwordLabel.text = @"";
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.accountLabel.text = @"TAIB automation";
-    self.usernameLabel.text = @"AlexP";
-    self.passwordLabel.text = @"Ap123456";
+//    self.accountLabel.text = @"TAIB automation";
+//    self.usernameLabel.text = @"AlexP";
+//    self.passwordLabel.text = @"Ap123456";
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"account"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"username"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]) {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         [[WebServiceManager sharedInstance] loginWithAccount:[[NSUserDefaults standardUserDefaults] objectForKey:@"account"]
