@@ -22,9 +22,13 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.accountLabel.text = @"";
-    self.usernameLabel.text = @"";
-    self.passwordLabel.text = @"";
+//    self.accountLabel.text = @"";
+//    self.usernameLabel.text = @"";
+    //    self.passwordLabel.text = @"";
+    self.accountLabel.text = @"TAIB automation";
+    self.usernameLabel.text = @"AlexP";
+    self.passwordLabel.text = @"Ap123456";
+
 }
 
 - (void)viewDidLoad {
@@ -33,54 +37,79 @@
 //    self.usernameLabel.text = @"AlexP";
 //    self.passwordLabel.text = @"Ap123456";
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"account"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"username"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]) {
+        [[WebServiceManager sharedInstance] setAccount:[[NSUserDefaults standardUserDefaults] objectForKey:@"account"]];
+        [[WebServiceManager sharedInstance] setUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
+        [[WebServiceManager sharedInstance] setPassword:[[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
+        [[WebServiceManager sharedInstance] setSessionId:[[NSUserDefaults standardUserDefaults] objectForKey:@"sessionId"]];
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        [[WebServiceManager sharedInstance] loginWithAccount:[[NSUserDefaults standardUserDefaults] objectForKey:@"account"]
-                                                    username:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]
-                                                 andPassword:[[NSUserDefaults standardUserDefaults] objectForKey:@"password"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-                                                     NSLog(@"%@",dictionary);
-                                                     if (dictionary) {
-                                                         if ([[dictionary objectForKey:@"code"] integerValue] == 429) {
-                                                             [[WebServiceManager sharedInstance] logoutWithCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-                                                                 if ([dictionary[@"success"] boolValue]) {
-                                                                     [[WebServiceManager sharedInstance] loginWithAccount:[[NSUserDefaults standardUserDefaults] objectForKey:@"account"]
-                                                                                                                 username:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]                                                                                              andPassword:[[NSUserDefaults standardUserDefaults] objectForKey:@"password"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-                                                                                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                                                                     NSLog(@"%@",dictionary);
-                                                                                                                     if (dictionary) {
-                                                                                                                         if ([[dictionary objectForKey:@"code"] integerValue] == 429) {
-                                                                                                                             
-                                                                                                                         } else {
-                                                                                                                             if (![[dictionary objectForKey:@"success"] boolValue]) {
-                                                                                                                                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                                                                                                                                message:dictionary[@"message"]
-                                                                                                                                                                                         preferredStyle:UIAlertControllerStyleAlert];
-                                                                                                                                 
-                                                                                                                                 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                                                                                                                                       handler:^(UIAlertAction * action) {}];
-                                                                                                                                 
-                                                                                                                                 [alert addAction:defaultAction];
-                                                                                                                                 [self presentViewController:alert animated:YES completion:nil];
-                                                                                                                             } else {
-                                                                                                                                 [WebServiceManager sharedInstance].sessionId = dictionary[@"t2msession"];
-                                                                                                                                 //            [WebServiceManager sharedInstance].sessionId = @"123abc456";
-                                                                                                                                 [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                                                                                                                                 [[WebServiceManager sharedInstance] getAccountInfoWithCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+        [[WebServiceManager sharedInstance] getAccountInfoWithCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if (dictionary) {
+                if (![[dictionary objectForKey:@"success"] boolValue]) {
+                    if ([dictionary[@"code"] integerValue] == 403) {
+                        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                        [[WebServiceManager sharedInstance] loginWithAccount:[[NSUserDefaults standardUserDefaults] objectForKey:@"account"]
+                                                                    username:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]
+                                                                 andPassword:[[NSUserDefaults standardUserDefaults] objectForKey:@"password"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                                                                     NSLog(@"%@",dictionary);
+                                                                     if (dictionary) {
+                                                                         if ([[dictionary objectForKey:@"code"] integerValue] == 429) {
+                                                                             [[WebServiceManager sharedInstance] logoutWithCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                                                                                 if ([dictionary[@"success"] boolValue]) {
+                                                                                     [[WebServiceManager sharedInstance] loginWithAccount:[[NSUserDefaults standardUserDefaults] objectForKey:@"account"]
+                                                                                                                                 username:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]                                                                                              andPassword:[[NSUserDefaults standardUserDefaults] objectForKey:@"password"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
                                                                                                                                      [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                                                                                     NSLog(@"%@",dictionary);
                                                                                                                                      if (dictionary) {
-                                                                                                                                         if (![[dictionary objectForKey:@"success"] boolValue]) {
-                                                                                                                                             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                                                                                                                                            message:dictionary[@"message"]
-                                                                                                                                                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                                                                                                                                         if ([[dictionary objectForKey:@"code"] integerValue] == 429) {
                                                                                                                                              
-                                                                                                                                             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                                                                                                                                                   handler:^(UIAlertAction * action) {}];
-                                                                                                                                             
-                                                                                                                                             [alert addAction:defaultAction];
-                                                                                                                                             [self presentViewController:alert animated:YES completion:nil];
                                                                                                                                          } else {
-                                                                                                                                             AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
-                                                                                                                                             accountInfoViewController.accountInfo = dictionary;
-                                                                                                                                             [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                                                                                                                                             if (![[dictionary objectForKey:@"success"] boolValue]) {
+                                                                                                                                                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                                                                                                                                message:dictionary[@"message"]
+                                                                                                                                                                                                         preferredStyle:UIAlertControllerStyleAlert];
+                                                                                                                                                 
+                                                                                                                                                 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                                                                                                                       handler:^(UIAlertAction * action) {}];
+                                                                                                                                                 
+                                                                                                                                                 [alert addAction:defaultAction];
+                                                                                                                                                 [self presentViewController:alert animated:YES completion:nil];
+                                                                                                                                             } else {
+                                                                                                                                                 [WebServiceManager sharedInstance].sessionId = dictionary[@"t2msession"];
+                                                                                                                                                 //            [WebServiceManager sharedInstance].sessionId = @"123abc456";
+                                                                                                                                                 [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                                                                                                                                                 [[WebServiceManager sharedInstance] getAccountInfoWithCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                                                                                                                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                                                                                                     if (dictionary) {
+                                                                                                                                                         if (![[dictionary objectForKey:@"success"] boolValue]) {
+                                                                                                                                                             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                                                                                                                                            message:dictionary[@"message"]
+                                                                                                                                                                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                                                                                                                                                             
+                                                                                                                                                             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                                                                                                                                   handler:^(UIAlertAction * action) {}];
+                                                                                                                                                             
+                                                                                                                                                             [alert addAction:defaultAction];
+                                                                                                                                                             [self presentViewController:alert animated:YES completion:nil];
+                                                                                                                                                         } else {
+                                                                                                                                                             AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
+                                                                                                                                                             accountInfoViewController.accountInfo = dictionary;
+                                                                                                                                                             [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                                                                                                                                                         }
+                                                                                                                                                     } else {
+                                                                                                                                                         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                                                                                                                                        message:[error localizedDescription]
+                                                                                                                                                                                                                 preferredStyle:UIAlertControllerStyleAlert];
+                                                                                                                                                         
+                                                                                                                                                         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                                                                                                                               handler:^(UIAlertAction * action) {}];
+                                                                                                                                                         
+                                                                                                                                                         [alert addAction:defaultAction];
+                                                                                                                                                         [self presentViewController:alert animated:YES completion:nil];
+                                                                                                                                                     }
+                                                                                                                                                     
+                                                                                                                                                 }];
+                                                                                                                                             }
                                                                                                                                          }
                                                                                                                                      } else {
                                                                                                                                          UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
@@ -93,101 +122,105 @@
                                                                                                                                          [alert addAction:defaultAction];
                                                                                                                                          [self presentViewController:alert animated:YES completion:nil];
                                                                                                                                      }
-                                                                                                                                     
                                                                                                                                  }];
-                                                                                                                             }
-                                                                                                                         }
-                                                                                                                     } else {
-                                                                                                                         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                                                                                                                        message:[error localizedDescription]
-                                                                                                                                                                                 preferredStyle:UIAlertControllerStyleAlert];
-                                                                                                                         
-                                                                                                                         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                                                                                                                               handler:^(UIAlertAction * action) {}];
-                                                                                                                         
-                                                                                                                         [alert addAction:defaultAction];
-                                                                                                                         [self presentViewController:alert animated:YES completion:nil];
-                                                                                                                     }
-                                                                                                                 }];
-                                                                     
-                                                                     
-                                                                 } else {
-                                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                     
-                                                                     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                                                                    message:[error localizedDescription]
-                                                                                                                             preferredStyle:UIAlertControllerStyleAlert];
-                                                                     
-                                                                     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                                                                           handler:^(UIAlertAction * action) {}];
-                                                                     
-                                                                     [alert addAction:defaultAction];
-                                                                     [self presentViewController:alert animated:YES completion:nil];
-                                                                 }
-                                                             }];
-                                                         } else {
-                                                             if (dictionary) {
-                                                                 if (![[dictionary objectForKey:@"success"] boolValue]) {
-                                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                                                                    message:dictionary[@"message"]
-                                                                                                                             preferredStyle:UIAlertControllerStyleAlert];
-                                                                     
-                                                                     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                                                                           handler:^(UIAlertAction * action) {}];
-                                                                     
-                                                                     [alert addAction:defaultAction];
-                                                                     [self presentViewController:alert animated:YES completion:nil];
-                                                                 } else {
-                                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                     [WebServiceManager sharedInstance].sessionId = dictionary[@"t2msession"];
-                                                                     //            [WebServiceManager sharedInstance].sessionId = @"123abc456";
-                                                                     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-                                                                     [[WebServiceManager sharedInstance] getAccountInfoWithCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-                                                                         [MBProgressHUD hideHUDForView:self.view animated:YES];
-                                                                         if (![[dictionary objectForKey:@"success"] boolValue]) {
-                                                                             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                                                                            message:dictionary[@"message"]
-                                                                                                                                     preferredStyle:UIAlertControllerStyleAlert];
-                                                                             
-                                                                             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                                                                                   handler:^(UIAlertAction * action) {}];
-                                                                             
-                                                                             [alert addAction:defaultAction];
-                                                                             [self presentViewController:alert animated:YES completion:nil];
+                                                                                     
+                                                                                     
+                                                                                 } else {
+                                                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                                     
+                                                                                     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                                                                    message:[error localizedDescription]
+                                                                                                                                             preferredStyle:UIAlertControllerStyleAlert];
+                                                                                     
+                                                                                     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                                                           handler:^(UIAlertAction * action) {}];
+                                                                                     
+                                                                                     [alert addAction:defaultAction];
+                                                                                     [self presentViewController:alert animated:YES completion:nil];
+                                                                                 }
+                                                                             }];
                                                                          } else {
-                                                                             AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
-                                                                             accountInfoViewController.accountInfo = dictionary;
-                                                                             [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                                                                             if (dictionary) {
+                                                                                 if (![[dictionary objectForKey:@"success"] boolValue]) {
+                                                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                                     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                                                                    message:dictionary[@"message"]
+                                                                                                                                             preferredStyle:UIAlertControllerStyleAlert];
+                                                                                     
+                                                                                     UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                                                           handler:^(UIAlertAction * action) {}];
+                                                                                     
+                                                                                     [alert addAction:defaultAction];
+                                                                                     [self presentViewController:alert animated:YES completion:nil];
+                                                                                 } else {
+                                                                                     [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                                     [WebServiceManager sharedInstance].sessionId = dictionary[@"t2msession"];
+                                                                                     //            [WebServiceManager sharedInstance].sessionId = @"123abc456";
+                                                                                     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+                                                                                     [[WebServiceManager sharedInstance] getAccountInfoWithCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+                                                                                         [MBProgressHUD hideHUDForView:self.view animated:YES];
+                                                                                         if (![[dictionary objectForKey:@"success"] boolValue]) {
+                                                                                             UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                                                                            message:dictionary[@"message"]
+                                                                                                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                                                                                             
+                                                                                             UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                                                                   handler:^(UIAlertAction * action) {}];
+                                                                                             
+                                                                                             [alert addAction:defaultAction];
+                                                                                             [self presentViewController:alert animated:YES completion:nil];
+                                                                                         } else {
+                                                                                             AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
+                                                                                             accountInfoViewController.accountInfo = dictionary;
+                                                                                             [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                                                                                         }
+                                                                                         
+                                                                                     }];
+                                                                                 }
+                                                                             } else {
+                                                                                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                                                                message:[error localizedDescription]
+                                                                                                                                         preferredStyle:UIAlertControllerStyleAlert];
+                                                                                 
+                                                                                 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                                                       handler:^(UIAlertAction * action) {}];
+                                                                                 
+                                                                                 [alert addAction:defaultAction];
+                                                                                 [self presentViewController:alert animated:YES completion:nil];
+                                                                             }
                                                                          }
+                                                                     } else {
+                                                                         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                                                                         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                                                                        message:[error localizedDescription]
+                                                                                                                                 preferredStyle:UIAlertControllerStyleAlert];
                                                                          
-                                                                     }];
-                                                                 }
-                                                             } else {
-                                                                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                                                                message:[error localizedDescription]
-                                                                                                                         preferredStyle:UIAlertControllerStyleAlert];
-                                                                 
-                                                                 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                                                                       handler:^(UIAlertAction * action) {}];
-                                                                 
-                                                                 [alert addAction:defaultAction];
-                                                                 [self presentViewController:alert animated:YES completion:nil];
-                                                             }
-                                                         }
-                                                     } else {
-                                                         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                                                         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                                                        message:[error localizedDescription]
-                                                                                                                 preferredStyle:UIAlertControllerStyleAlert];
-                                                         
-                                                         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                                                               handler:^(UIAlertAction * action) {}];
-                                                         
-                                                         [alert addAction:defaultAction];
-                                                         [self presentViewController:alert animated:YES completion:nil];
-                                                     }
-                                                 }];
+                                                                         UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                                                                               handler:^(UIAlertAction * action) {}];
+                                                                         
+                                                                         [alert addAction:defaultAction];
+                                                                         [self presentViewController:alert animated:YES completion:nil];
+                                                                     }
+                                                                 }];
+
+                    } else {
+                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                       message:dictionary[@"message"]
+                                                                                preferredStyle:UIAlertControllerStyleAlert];
+                        
+                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                              handler:^(UIAlertAction * action) {}];
+                        
+                        [alert addAction:defaultAction];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    }
+                } else {
+                    AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
+                    accountInfoViewController.accountInfo = dictionary;
+                    [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                }
+            }
+        }];
         
     }    // Do any additional setup after loading the view, typically from a nib.
 }
