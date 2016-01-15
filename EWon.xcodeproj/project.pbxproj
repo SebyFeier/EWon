@@ -207,6 +207,7 @@
 				F1EB819A1C004A2500BB39ED /* Resources */,
 				0BE18AC5D55B55BAC355EDD1 /* Embed Pods Frameworks */,
 				2E1AA7FC2035C42D6169484B /* Copy Pods Resources */,
+				F17BE5141C455F5A00D73F8C /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -353,6 +354,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EWon/Pods-EWon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F17BE5141C455F5A00D73F8C /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 4029d4c2038527a17ae8de6dfa484c88ec21a9b5 dd24c883176013ddf2b5c78b116511bde4a72da3ac35f547749d48a78e472c68";
+		};
 		F6EF0793F92382F45ACBD51B /* Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -455,8 +469,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastian Feier (9LYZF6E2YG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sebastian Feier (9LYZF6E2YG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pop Alexandru (777M6JB42M)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -478,6 +492,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -500,8 +515,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastian Feier (9LYZF6E2YG)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Sebastian Feier (9LYZF6E2YG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pop Alexandru (777M6JB42M)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -516,6 +531,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -527,13 +543,13 @@
 			baseConfigurationReference = 240E375750972E2BD06F429C /* Pods-EWon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastian Feier (9LYZF6E2YG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
 				INFOPLIST_FILE = EWon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Work.EWon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talk2m.ewon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e82ad821-3fc3-40ef-b89c-796113764b64";
+				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
 			};
 			name = Debug;
 		};
@@ -542,13 +558,13 @@
 			baseConfigurationReference = B4E076F4218BB496E834695B /* Pods-EWon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Sebastian Feier (9LYZF6E2YG)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
 				INFOPLIST_FILE = EWon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Work.EWon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.talk2m.ewon;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "e82ad821-3fc3-40ef-b89c-796113764b64";
+				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
 			};
 			name = Release;
 		};

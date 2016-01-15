@@ -23,7 +23,7 @@
     
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44)];
     headerView.backgroundColor = [UIColor clearColor];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 44)];
     nameLabel.text = @"Name:";
@@ -53,11 +53,11 @@
     
     [headerView addSubview:nameLabel];
     [headerView addSubview:name];
-    [headerView addSubview:descriptionLabel];
-    [headerView addSubview:description];
-    [headerView addSubview:statusLabel];
-    [headerView addSubview:status];
-    [headerView addSubview:actionButton];
+//    [headerView addSubview:descriptionLabel];
+//    [headerView addSubview:description];
+//    [headerView addSubview:statusLabel];
+//    [headerView addSubview:status];
+//    [headerView addSubview:actionButton];
     
     self.tableView.tableHeaderView = headerView;
 //    self.nameLabel.text = self.ewonInfo[@"ewon"][@"name"];
