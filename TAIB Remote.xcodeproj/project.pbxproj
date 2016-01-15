@@ -65,10 +65,10 @@
 		F1EB81AB1C004A2600BB39ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1EB81AE1C004A2600BB39ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1EB81B01C004A2600BB39ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1EB81B51C004A2600BB39ED /* EWonTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EWonTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1EB81B51C004A2600BB39ED /* TAIB Remote.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TAIB Remote.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EB81B91C004A2600BB39ED /* EWonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWonTests.m; sourceTree = "<group>"; };
 		F1EB81BB1C004A2600BB39ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1EB81C01C004A2600BB39ED /* EWonUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EWonUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1EB81C01C004A2600BB39ED /* TAIB Remote.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TAIB Remote.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EB81C41C004A2600BB39ED /* EWonUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWonUITests.m; sourceTree = "<group>"; };
 		F1EB81C61C004A2600BB39ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1EB81D21C004C7E00BB39ED /* WebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceManager.h; sourceTree = "<group>"; };
@@ -134,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				F1EB819C1C004A2600BB39ED /* EWon.app */,
-				F1EB81B51C004A2600BB39ED /* EWonTests.xctest */,
-				F1EB81C01C004A2600BB39ED /* EWonUITests.xctest */,
+				F1EB81B51C004A2600BB39ED /* TAIB Remote.xctest */,
+				F1EB81C01C004A2600BB39ED /* TAIB Remote.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -197,9 +197,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F1EB819B1C004A2500BB39ED /* EWon */ = {
+		F1EB819B1C004A2500BB39ED /* TAIB Remote */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1EB81C91C004A2600BB39ED /* Build configuration list for PBXNativeTarget "EWon" */;
+			buildConfigurationList = F1EB81C91C004A2600BB39ED /* Build configuration list for PBXNativeTarget "TAIB Remote" */;
 			buildPhases = (
 				F6EF0793F92382F45ACBD51B /* Check Pods Manifest.lock */,
 				F1EB81981C004A2500BB39ED /* Sources */,
@@ -213,14 +213,14 @@
 			);
 			dependencies = (
 			);
-			name = EWon;
+			name = "TAIB Remote";
 			productName = EWon;
 			productReference = F1EB819C1C004A2600BB39ED /* EWon.app */;
 			productType = "com.apple.product-type.application";
 		};
-		F1EB81B41C004A2600BB39ED /* EWonTests */ = {
+		F1EB81B41C004A2600BB39ED /* TAIB RemoteTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1EB81CC1C004A2600BB39ED /* Build configuration list for PBXNativeTarget "EWonTests" */;
+			buildConfigurationList = F1EB81CC1C004A2600BB39ED /* Build configuration list for PBXNativeTarget "TAIB RemoteTests" */;
 			buildPhases = (
 				F1EB81B11C004A2600BB39ED /* Sources */,
 				F1EB81B21C004A2600BB39ED /* Frameworks */,
@@ -231,14 +231,14 @@
 			dependencies = (
 				F1EB81B71C004A2600BB39ED /* PBXTargetDependency */,
 			);
-			name = EWonTests;
+			name = "TAIB RemoteTests";
 			productName = EWonTests;
-			productReference = F1EB81B51C004A2600BB39ED /* EWonTests.xctest */;
+			productReference = F1EB81B51C004A2600BB39ED /* TAIB Remote.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		F1EB81BF1C004A2600BB39ED /* EWonUITests */ = {
+		F1EB81BF1C004A2600BB39ED /* TAIB RemoteUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F1EB81CF1C004A2600BB39ED /* Build configuration list for PBXNativeTarget "EWonUITests" */;
+			buildConfigurationList = F1EB81CF1C004A2600BB39ED /* Build configuration list for PBXNativeTarget "TAIB RemoteUITests" */;
 			buildPhases = (
 				F1EB81BC1C004A2600BB39ED /* Sources */,
 				F1EB81BD1C004A2600BB39ED /* Frameworks */,
@@ -249,9 +249,9 @@
 			dependencies = (
 				F1EB81C21C004A2600BB39ED /* PBXTargetDependency */,
 			);
-			name = EWonUITests;
+			name = "TAIB RemoteUITests";
 			productName = EWonUITests;
-			productReference = F1EB81C01C004A2600BB39ED /* EWonUITests.xctest */;
+			productReference = F1EB81C01C004A2600BB39ED /* TAIB Remote.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -276,7 +276,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F1EB81971C004A2500BB39ED /* Build configuration list for PBXProject "EWon" */;
+			buildConfigurationList = F1EB81971C004A2500BB39ED /* Build configuration list for PBXProject "TAIB Remote" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -289,9 +289,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F1EB819B1C004A2500BB39ED /* EWon */,
-				F1EB81B41C004A2600BB39ED /* EWonTests */,
-				F1EB81BF1C004A2600BB39ED /* EWonUITests */,
+				F1EB819B1C004A2500BB39ED /* TAIB Remote */,
+				F1EB81B41C004A2600BB39ED /* TAIB RemoteTests */,
+				F1EB81BF1C004A2600BB39ED /* TAIB RemoteUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -422,12 +422,12 @@
 /* Begin PBXTargetDependency section */
 		F1EB81B71C004A2600BB39ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F1EB819B1C004A2500BB39ED /* EWon */;
+			target = F1EB819B1C004A2500BB39ED /* TAIB Remote */;
 			targetProxy = F1EB81B61C004A2600BB39ED /* PBXContainerItemProxy */;
 		};
 		F1EB81C21C004A2600BB39ED /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = F1EB819B1C004A2500BB39ED /* EWon */;
+			target = F1EB819B1C004A2500BB39ED /* TAIB Remote */;
 			targetProxy = F1EB81C11C004A2600BB39ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -548,7 +548,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.talk2m.ewon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "TAIB Remote";
 				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
 			};
 			name = Debug;
@@ -563,7 +563,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.talk2m.ewon;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "TAIB Remote";
 				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
 			};
 			name = Release;
@@ -575,8 +575,8 @@
 				INFOPLIST_FILE = EWonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Work.EWonTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EWon.app/EWon";
+				PRODUCT_NAME = "TAIB Remote";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TAIB Remote.app/TAIB Remote";
 			};
 			name = Debug;
 		};
@@ -587,8 +587,8 @@
 				INFOPLIST_FILE = EWonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Work.EWonTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/EWon.app/EWon";
+				PRODUCT_NAME = "TAIB Remote";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TAIB Remote.app/TAIB Remote";
 			};
 			name = Release;
 		};
@@ -598,7 +598,7 @@
 				INFOPLIST_FILE = EWonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Work.EWonUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "TAIB Remote";
 				TEST_TARGET_NAME = EWon;
 				USES_XCTRUNNER = YES;
 			};
@@ -610,7 +610,7 @@
 				INFOPLIST_FILE = EWonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Work.EWonUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "TAIB Remote";
 				TEST_TARGET_NAME = EWon;
 				USES_XCTRUNNER = YES;
 			};
@@ -619,7 +619,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F1EB81971C004A2500BB39ED /* Build configuration list for PBXProject "EWon" */ = {
+		F1EB81971C004A2500BB39ED /* Build configuration list for PBXProject "TAIB Remote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1EB81C71C004A2600BB39ED /* Debug */,
@@ -628,7 +628,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1EB81C91C004A2600BB39ED /* Build configuration list for PBXNativeTarget "EWon" */ = {
+		F1EB81C91C004A2600BB39ED /* Build configuration list for PBXNativeTarget "TAIB Remote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1EB81CA1C004A2600BB39ED /* Debug */,
@@ -637,7 +637,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1EB81CC1C004A2600BB39ED /* Build configuration list for PBXNativeTarget "EWonTests" */ = {
+		F1EB81CC1C004A2600BB39ED /* Build configuration list for PBXNativeTarget "TAIB RemoteTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1EB81CD1C004A2600BB39ED /* Debug */,
@@ -646,7 +646,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F1EB81CF1C004A2600BB39ED /* Build configuration list for PBXNativeTarget "EWonUITests" */ = {
+		F1EB81CF1C004A2600BB39ED /* Build configuration list for PBXNativeTarget "TAIB RemoteUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1EB81D01C004A2600BB39ED /* Debug */,

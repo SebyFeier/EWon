@@ -73,6 +73,11 @@
 //    }
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
+}
+
 - (void)logoutButtonTapped:(UIButton *)button {
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [[WebServiceManager sharedInstance] logoutWithCompletionBlock:^(NSDictionary *dictionary, NSError *error) {

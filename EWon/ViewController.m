@@ -26,17 +26,17 @@
     self.accountLabel.text = @"";
     self.usernameLabel.text = @"";
     self.passwordLabel.text = @"";
-//    self.accountLabel.text = @"TAIB automation";
-//    self.usernameLabel.text = @"AlexP";
-//    self.passwordLabel.text = @"Ap123456";
-
+        self.accountLabel.text = @"TAIB automation";
+        self.usernameLabel.text = @"AlexP";
+        self.passwordLabel.text = @"Ap123456";
+    
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    self.accountLabel.text = @"TAIB automation";
-//    self.usernameLabel.text = @"AlexP";
-//    self.passwordLabel.text = @"Ap123456";
+    //    self.accountLabel.text = @"TAIB automation";
+    //    self.usernameLabel.text = @"AlexP";
+    //    self.passwordLabel.text = @"Ap123456";
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"account"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"username"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]) {
         [[WebServiceManager sharedInstance] setAccount:[[NSUserDefaults standardUserDefaults] objectForKey:@"account"]];
         [[WebServiceManager sharedInstance] setUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
@@ -93,9 +93,9 @@
                                                                                                                                                              [alert addAction:defaultAction];
                                                                                                                                                              [self presentViewController:alert animated:YES completion:nil];
                                                                                                                                                          } else {
-//                                                                                                                                                             AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
-//                                                                                                                                                             accountInfoViewController.accountInfo = dictionary;
-//                                                                                                                                                             [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                                                                                                                                                             //                                                                                                                                                             AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
+                                                                                                                                                             //                                                                                                                                                             accountInfoViewController.accountInfo = dictionary;
+                                                                                                                                                             //                                                                                                                                                             [self.navigationController pushViewController:accountInfoViewController animated:YES];
                                                                                                                                                              
                                                                                                                                                              NSDictionary *pool = [dictionary[@"pools"] firstObject];
                                                                                                                                                              [[WebServiceManager sharedInstance] getEwonsWithPool:pool[@"id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
@@ -204,9 +204,9 @@
                                                                                              [alert addAction:defaultAction];
                                                                                              [self presentViewController:alert animated:YES completion:nil];
                                                                                          } else {
-//                                                                                             AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
-//                                                                                             accountInfoViewController.accountInfo = dictionary;
-//                                                                                             [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                                                                                             //                                                                                             AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
+                                                                                             //                                                                                             accountInfoViewController.accountInfo = dictionary;
+                                                                                             //                                                                                             [self.navigationController pushViewController:accountInfoViewController animated:YES];
                                                                                              
                                                                                              NSDictionary *pool = [dictionary[@"pools"] firstObject];
                                                                                              [[WebServiceManager sharedInstance] getEwonsWithPool:pool[@"id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
@@ -269,7 +269,7 @@
                                                                          [self presentViewController:alert animated:YES completion:nil];
                                                                      }
                                                                  }];
-
+                        
                     } else {
                         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
                                                                                        message:dictionary[@"message"]
@@ -282,9 +282,9 @@
                         [self presentViewController:alert animated:YES completion:nil];
                     }
                 } else {
-//                    AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
-//                    accountInfoViewController.accountInfo = dictionary;
-//                    [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                    //                    AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
+                    //                    accountInfoViewController.accountInfo = dictionary;
+                    //                    [self.navigationController pushViewController:accountInfoViewController animated:YES];
                     
                     NSDictionary *pool = [dictionary[@"pools"] firstObject];
                     [[WebServiceManager sharedInstance] getEwonsWithPool:pool[@"id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
@@ -384,9 +384,9 @@
                                                                                                                                          [alert addAction:defaultAction];
                                                                                                                                          [self presentViewController:alert animated:YES completion:nil];
                                                                                                                                      } else {
-//                                                                                                                                         AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
-//                                                                                                                                         accountInfoViewController.accountInfo = dictionary;
-//                                                                                                                                         [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                                                                                                                                         //                                                                                                                                         AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
+                                                                                                                                         //                                                                                                                                         accountInfoViewController.accountInfo = dictionary;
+                                                                                                                                         //                                                                                                                                         [self.navigationController pushViewController:accountInfoViewController animated:YES];
                                                                                                                                          
                                                                                                                                          NSDictionary *pool = [dictionary[@"pools"] firstObject];
                                                                                                                                          [[WebServiceManager sharedInstance] getEwonsWithPool:pool[@"id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
@@ -495,9 +495,9 @@
                                                                          [alert addAction:defaultAction];
                                                                          [self presentViewController:alert animated:YES completion:nil];
                                                                      } else {
-//                                                                         AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
-//                                                                         accountInfoViewController.accountInfo = dictionary;
-//                                                                         [self.navigationController pushViewController:accountInfoViewController animated:YES];
+                                                                         //                                                                         AccountInfoViewController *accountInfoViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AccountInfoViewControllerIdentifier"];
+                                                                         //                                                                         accountInfoViewController.accountInfo = dictionary;
+                                                                         //                                                                         [self.navigationController pushViewController:accountInfoViewController animated:YES];
                                                                          NSDictionary *pool = [dictionary[@"pools"] firstObject];
                                                                          [[WebServiceManager sharedInstance] getEwonsWithPool:pool[@"id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
                                                                              NSLog(@"%@",dictionary);
@@ -530,7 +530,7 @@
                                                                                  [self presentViewController:alert animated:YES completion:nil];
                                                                              }
                                                                          }];
-
+                                                                         
                                                                      }
                                                                      
                                                                  }];

@@ -370,20 +370,46 @@
                                     <outlet property="delegate" destination="Gl1-Mq-7O8" id="Fud-2s-nim"/>
                                 </connections>
                             </webView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vco-lu-kTl">
+                                <rect key="frame" x="20" y="176" width="500" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="YPr-c4-AUm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WTp-qV-ihO">
+                                <rect key="frame" x="528" y="176" width="59" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="59" id="Ftu-FE-482"/>
+                                    <constraint firstAttribute="height" constant="30" id="V4o-Yh-CRQ"/>
+                                </constraints>
+                                <state key="normal" title="Connect"/>
+                                <connections>
+                                    <action selector="connectButtonTapped:" destination="Gl1-Mq-7O8" eventType="touchUpInside" id="WWr-hb-WoG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Zto-Ek-hBh" firstAttribute="leading" secondItem="Jy7-GQ-ofJ" secondAttribute="leading" id="3vg-Q7-nlR"/>
                             <constraint firstItem="rLP-Gq-6zK" firstAttribute="top" secondItem="vgs-L4-sky" secondAttribute="bottom" id="F3b-cL-Gys"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Vco-lu-kTl" secondAttribute="leading" id="HFh-rE-bI0"/>
                             <constraint firstItem="vgs-L4-sky" firstAttribute="leading" secondItem="Jy7-GQ-ofJ" secondAttribute="leading" id="Jq5-nJ-NPR"/>
                             <constraint firstAttribute="trailing" secondItem="vgs-L4-sky" secondAttribute="trailing" id="MGA-Fd-Nnm"/>
                             <constraint firstAttribute="trailing" secondItem="Zto-Ek-hBh" secondAttribute="trailing" id="MSD-b1-YRJ"/>
                             <constraint firstItem="Zto-Ek-hBh" firstAttribute="top" secondItem="MhY-t2-Rjl" secondAttribute="bottom" id="OaN-UC-dG3"/>
                             <constraint firstItem="vgs-L4-sky" firstAttribute="top" secondItem="Jy7-GQ-ofJ" secondAttribute="top" id="Rel-yd-F3Y"/>
                             <constraint firstItem="rLP-Gq-6zK" firstAttribute="top" secondItem="Zto-Ek-hBh" secondAttribute="bottom" id="U8P-PC-DFP"/>
+                            <constraint firstItem="WTp-qV-ihO" firstAttribute="leading" secondItem="Vco-lu-kTl" secondAttribute="trailing" constant="8" id="W4E-22-dy1"/>
+                            <constraint firstItem="Vco-lu-kTl" firstAttribute="top" secondItem="MhY-t2-Rjl" secondAttribute="bottom" constant="156" id="bWy-RA-Vzl"/>
+                            <constraint firstItem="WTp-qV-ihO" firstAttribute="top" secondItem="MhY-t2-Rjl" secondAttribute="bottom" constant="156" id="cMQ-Ot-c7s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="WTp-qV-ihO" secondAttribute="trailing" constant="-7" id="mm3-ep-yxf"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="connectButton" destination="WTp-qV-ihO" id="duS-Bz-V4t"/>
+                        <outlet property="passwordTextField" destination="Vco-lu-kTl" id="05T-Pc-Dqs"/>
                         <outlet property="webView" destination="Zto-Ek-hBh" id="9fL-8c-8i5"/>
                     </connections>
                 </viewController>
