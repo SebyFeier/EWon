@@ -13,6 +13,7 @@
 
 @interface AccountInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 
 @end
 
@@ -63,6 +64,11 @@
     [headerView addSubview:accountType];
     
     self.tableView.tableHeaderView = headerView;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+    } else {
+        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+    }
     // Do any additional setup after loading the view.
 }
 

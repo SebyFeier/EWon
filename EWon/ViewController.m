@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *accountLabel;
 @property (weak, nonatomic) IBOutlet UITextField *usernameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 
 @end
 
@@ -26,6 +27,11 @@
     self.accountLabel.text = @"";
     self.usernameLabel.text = @"";
     self.passwordLabel.text = @"";
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+    } else {
+        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+    }
         self.accountLabel.text = @"TAIB automation";
         self.usernameLabel.text = @"AlexP";
         self.passwordLabel.text = @"Ap123456";

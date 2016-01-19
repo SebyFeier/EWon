@@ -15,6 +15,7 @@
 @interface EwonListViewController ()<UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate>
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 
 @end
 
@@ -22,10 +23,16 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"Instalaciones";
     [self.navigationItem setHidesBackButton:YES];
     UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
     self.navigationItem.rightBarButtonItem = logoutButton;
-    
+    self.searchBar.showsCancelButton = YES;
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+    } else {
+        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+    }
     // Do any additional setup after loading the view.
 }
 - (void)logoutButtonTapped:(UIButton *)button {
@@ -66,7 +73,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.ewonsList[@"ewons"] count];
+    return [self.ewonsList[@"ewons"] count] + 1;
     //    return 5;
 }
 
@@ -76,9 +83,18 @@
         ewonTableViewCell = [[EwonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EwonTableViewCellIdentifier"];
     }
     ewonTableViewCell.backgroundColor = [UIColor clearColor];
-    NSDictionary *ewonInfo = [[self.ewonsList objectForKey:@"ewons"] objectAtIndex:indexPath.row];
-    ewonTableViewCell.ewonNameLabel.text = ewonInfo[@"name"];
-    ewonTableViewCell.ewonStatusLabel.text = ewonInfo[@"status"];
+    if (indexPath.row == 0) {
+        ewonTableViewCell.ewonNameLabel.text = @"Instalación";
+        ewonTableViewCell.ewonStatusLabel.text = @"Estado";
+        ewonTableViewCell.ewonNameLabel.font = [UIFont boldSystemFontOfSize:17];
+        ewonTableViewCell.ewonStatusLabel.font = [UIFont boldSystemFontOfSize:17];
+    } else {
+        NSDictionary *ewonInfo = [[self.ewonsList objectForKey:@"ewons"] objectAtIndex:indexPath.row - 1];
+        ewonTableViewCell.ewonNameLabel.text = ewonInfo[@"name"];
+        ewonTableViewCell.ewonStatusLabel.text = ewonInfo[@"status"];
+        ewonTableViewCell.ewonNameLabel.font = [UIFont systemFontOfSize:17];
+        ewonTableViewCell.ewonStatusLabel.font = [UIFont systemFontOfSize:17];
+    }
     //    ewonTableViewCell.ewonNameLabel.text = @"name";
     //    ewonTableViewCell.ewonStatusLabel.text = @"status";
     return ewonTableViewCell;
@@ -86,14 +102,30 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    NSDictionary *ewonInfo = [[self.ewonsList objectForKey:@"ewons"] objectAtIndex:indexPath.row];
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    [[WebServiceManager sharedInstance] getEwonWithName:nil pool:ewonInfo[@"id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-        [MBProgressHUD hideHUDForView:self.view animated:YES];
-        if (dictionary) {
-            if (![[dictionary objectForKey:@"success"] boolValue]) {
+    if (indexPath.row > 0) {
+        NSDictionary *ewonInfo = [[self.ewonsList objectForKey:@"ewons"] objectAtIndex:indexPath.row - 1];
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        [[WebServiceManager sharedInstance] getEwonWithName:nil pool:ewonInfo[@"id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+            [MBProgressHUD hideHUDForView:self.view animated:YES];
+            if (dictionary) {
+                if (![[dictionary objectForKey:@"success"] boolValue]) {
+                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                   message:dictionary[@"message"]
+                                                                            preferredStyle:UIAlertControllerStyleAlert];
+                    
+                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                          handler:^(UIAlertAction * action) {}];
+                    
+                    [alert addAction:defaultAction];
+                    [self presentViewController:alert animated:YES completion:nil];
+                } else {
+                    EwonViewController *ewonViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EwonViewControllerIdentifier"];
+                    ewonViewController.ewonInfo = dictionary;
+                    [self.navigationController pushViewController:ewonViewController animated:YES];
+                }
+            } else {
                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                               message:dictionary[@"message"]
+                                                                               message:[error localizedDescription]
                                                                         preferredStyle:UIAlertControllerStyleAlert];
                 
                 UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
@@ -101,23 +133,13 @@
                 
                 [alert addAction:defaultAction];
                 [self presentViewController:alert animated:YES completion:nil];
-            } else {
-                EwonViewController *ewonViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EwonViewControllerIdentifier"];
-                ewonViewController.ewonInfo = dictionary;
-                [self.navigationController pushViewController:ewonViewController animated:YES];
             }
-        } else {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:[error localizedDescription]
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
-        }
-    }];
+        }];
+    }
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar {
+    [self.view endEditing:YES];
 }
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {

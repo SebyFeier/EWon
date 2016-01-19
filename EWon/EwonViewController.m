@@ -13,6 +13,7 @@
 #import "WebViewViewController.h"
 @interface EwonViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 
 @end
 
@@ -25,8 +26,8 @@
     self.navigationItem.rightBarButtonItem = logoutButton;
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44)];
     headerView.backgroundColor = [UIColor clearColor];
-    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 0, 100, 44)];
-    nameLabel.text = @"Name:";
+    UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, 100, 44)];
+    nameLabel.text = @"Instalación:";
     UILabel *name = [[UILabel alloc] initWithFrame:CGRectMake(100 + 15, 0, CGRectGetWidth(self.view.frame)-100, 44)];
     name.text = self.ewonInfo[@"ewon"][@"name"];
     
@@ -70,7 +71,12 @@
 //    } else if ([self.ewonInfo[@"ewon"][@"status"] isEqualToString:@"offline"]) {
 //        [self.actionButton addTarget:self action:@selector(wakeUp:) forControlEvents:UIControlEventTouchUpInside];
 //        [self.actionButton setTitle:@"Wake Up" forState:UIControlStateNormal];
-//    }
+    //    }
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+    } else {
+        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -183,22 +189,44 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.ewonInfo[@"ewon"][@"lanDevices"] count];
+    return [self.ewonInfo[@"ewon"][@"lanDevices"] count] + 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    return @"Lan Devices";
-}
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+//    return @"Equipos en red";
+//}
 
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 18)];
+    /* Create custom view to display section header... */
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(8, 5, tableView.frame.size.width, 18)];
+//    [label setFont:[UIFont boldSystemFontOfSize:12]];
+    NSString *string = @"Equipos en red";
+    /* Section header is in 0th index... */
+    [label setText:string];
+    [view addSubview:label];
+    [view setBackgroundColor:[UIColor lightGrayColor]];
+     return view;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     EwonTableViewCell *ewonTableViewCell = [tableView dequeueReusableCellWithIdentifier:@"EwonTableViewCellIdentifier"];
     if (!ewonTableViewCell) {
         ewonTableViewCell = [[EwonTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"EwonTableViewCellIdentifier"];
     }
     ewonTableViewCell.backgroundColor = [UIColor clearColor];
-    NSDictionary *lanDevice = [[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"lanDevices"] objectAtIndex:indexPath.row];
-    ewonTableViewCell.ewonNameLabel.text = lanDevice[@"name"];
-    ewonTableViewCell.ewonStatusLabel.text = lanDevice[@"description"];
+    if (indexPath.row == 0) {
+        ewonTableViewCell.ewonNameLabel.text = @"Equipo";
+        ewonTableViewCell.ewonStatusLabel.text = @"Descripción";
+        ewonTableViewCell.ewonNameLabel.font = [UIFont boldSystemFontOfSize:17];
+        ewonTableViewCell.ewonStatusLabel.font = [UIFont boldSystemFontOfSize:17];
+    } else {
+        NSDictionary *lanDevice = [[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"lanDevices"] objectAtIndex:indexPath.row - 1];
+        ewonTableViewCell.ewonNameLabel.text = lanDevice[@"name"];
+        ewonTableViewCell.ewonStatusLabel.text = lanDevice[@"description"];
+        ewonTableViewCell.ewonNameLabel.font = [UIFont systemFontOfSize:17];
+        ewonTableViewCell.ewonStatusLabel.font = [UIFont systemFontOfSize:17];
+    }
     //    ewonTableViewCell.ewonNameLabel.text = @"name";
     //    ewonTableViewCell.ewonStatusLabel.text = @"status";
     return ewonTableViewCell;
@@ -207,18 +235,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    NSDictionary *lanDevice = [[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"lanDevices"] objectAtIndex:indexPath.row];
-    
-    NSURL *url = [[WebServiceManager sharedInstance] reachEwonWithIp:lanDevice[@"ip"] port:lanDevice[@"port"] name:[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"name"]];
-//    [[WebServiceManager sharedInstance] reachEwonWithIp:lanDevice[@"ip"] port:lanDevice[@"port"] name:[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"name"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
-//        if (dictionary) {
-//            
-//        }
-//    }];
-    WebViewViewController *webViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewControllerIdentifier"];
-    webViewController.url = url;
-    [self.navigationController pushViewController:webViewController animated:YES];
+    if (indexPath.row > 0) {
+        NSDictionary *lanDevice = [[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"lanDevices"] objectAtIndex:indexPath.row - 1];
+        
+        NSURL *url = [[WebServiceManager sharedInstance] reachEwonWithIp:lanDevice[@"ip"] port:lanDevice[@"port"] name:[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"name"]];
+        //    [[WebServiceManager sharedInstance] reachEwonWithIp:lanDevice[@"ip"] port:lanDevice[@"port"] name:[[self.ewonInfo objectForKey:@"ewon"] objectForKey:@"name"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
+        //        if (dictionary) {
+        //
+        //        }
+        //    }];
+        WebViewViewController *webViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"WebViewViewControllerIdentifier"];
+        webViewController.url = url;
+        [self.navigationController pushViewController:webViewController animated:YES];
+    }
 }
 
 /*

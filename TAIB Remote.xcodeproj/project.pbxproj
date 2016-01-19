@@ -55,7 +55,7 @@
 		F1A952951C0219570009323E /* EwonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EwonViewController.m; sourceTree = "<group>"; };
 		F1A952971C021CA80009323E /* EwonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EwonTableViewCell.h; sourceTree = "<group>"; };
 		F1A952981C021CA80009323E /* EwonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EwonTableViewCell.m; sourceTree = "<group>"; };
-		F1EB819C1C004A2600BB39ED /* EWon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EWon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1EB819C1C004A2600BB39ED /* TAIB Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TAIB Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EB81A01C004A2600BB39ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1EB81A21C004A2600BB39ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F1EB81A31C004A2600BB39ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -133,7 +133,7 @@
 		F1EB819D1C004A2600BB39ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1EB819C1C004A2600BB39ED /* EWon.app */,
+				F1EB819C1C004A2600BB39ED /* TAIB Remote.app */,
 				F1EB81B51C004A2600BB39ED /* TAIB Remote.xctest */,
 				F1EB81C01C004A2600BB39ED /* TAIB Remote.xctest */,
 			);
@@ -215,7 +215,7 @@
 			);
 			name = "TAIB Remote";
 			productName = EWon;
-			productReference = F1EB819C1C004A2600BB39ED /* EWon.app */;
+			productReference = F1EB819C1C004A2600BB39ED /* TAIB Remote.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F1EB81B41C004A2600BB39ED /* TAIB RemoteTests */ = {

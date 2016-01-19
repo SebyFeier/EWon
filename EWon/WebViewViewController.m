@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImage;
 
 @end
 
@@ -32,11 +33,17 @@
     self.webView.hidden = YES;
     self.passwordTextField.hidden = NO;
     self.connectButton.hidden = NO;
+    self.logoImage.hidden = NO;
     self.passwordTextField.delegate = self;
     self.passwordTextField.secureTextEntry = YES;
     repeat = 0;
     isPasswordEnabled = NO;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+    } else {
+        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+    }
     // Do any additional setup after loading the view.
 }
 
@@ -99,12 +106,14 @@
         self.webView.hidden = NO;
         self.passwordTextField.hidden = YES;
         self.connectButton.hidden = YES;
+        self.logoImage.hidden = YES;
         self.navigationController.navigationBarHidden = YES;
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     } else {
         self.webView.hidden = YES;
         self.passwordTextField.hidden = NO;
         self.connectButton.hidden = NO;
+        self.logoImage.hidden = NO;
     }
     if ([webViewText rangeOfString:@"Login"].location != NSNotFound) {
         if (repeat == 0) {
@@ -125,6 +134,11 @@
             }
             [self.navigationController popViewControllerAnimated:YES];
         }
+    } else if ([webViewText rangeOfString:@"internal error"].location != NSNotFound) {
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Internal Error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [MBProgressHUD hideHUDForView:self.view animated:YES];
+        self.webView.hidden = YES;
+        [self.navigationController popViewControllerAnimated:YES];
     } else if ([webViewText rangeOfString:@"Enter VNC password"].location != NSNotFound) {
         [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('regular').style.display = 'inline';"];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
