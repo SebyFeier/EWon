@@ -32,9 +32,9 @@
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
     }
-        self.accountLabel.text = @"TAIB automation";
-        self.usernameLabel.text = @"AlexP";
-        self.passwordLabel.text = @"Ap123456";
+//        self.accountLabel.text = @"TAIB automation";
+//        self.usernameLabel.text = @"AlexP";
+//        self.passwordLabel.text = @"Ap123456";
     
 }
 

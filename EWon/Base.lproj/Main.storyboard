@@ -87,20 +87,32 @@
                             <constraint firstItem="Mc1-M8-I7L" firstAttribute="top" secondItem="yf9-Ev-udb" secondAttribute="bottom" constant="18" id="84c-7a-qzg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ssm-2X-FhN" secondAttribute="leading" id="8C9-7e-Rb1"/>
                             <constraint firstItem="OF2-z6-kLx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-20" id="AEF-zs-Krm"/>
+                            <constraint firstItem="OF2-z6-kLx" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Aiv-8D-VAe"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OF2-z6-kLx" secondAttribute="bottom" id="BNY-Wb-0QH"/>
                             <constraint firstItem="OF2-z6-kLx" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="-64" id="Gk6-qh-hlI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ssm-2X-FhN" secondAttribute="trailing" id="HLz-Jv-H5Y"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2By-ip-1ca" secondAttribute="trailing" id="Mfp-pI-gc4"/>
                             <constraint firstItem="ssm-2X-FhN" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="67" id="Tdu-Et-3Im"/>
                             <constraint firstItem="ZKG-v9-LOb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wuf-oa-fyf"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OF2-z6-kLx" secondAttribute="bottom" id="YiW-Gg-KXE"/>
+                            <constraint firstItem="OF2-z6-kLx" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Zht-dd-Lg9"/>
                             <constraint firstItem="ZKG-v9-LOb" firstAttribute="top" secondItem="2By-ip-1ca" secondAttribute="bottom" constant="21" id="bhn-1S-t3k"/>
                             <constraint firstItem="yf9-Ev-udb" firstAttribute="top" secondItem="ssm-2X-FhN" secondAttribute="bottom" constant="15" id="fjB-8r-ewt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="yf9-Ev-udb" secondAttribute="trailing" id="gTS-0V-Fj5"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OF2-z6-kLx" secondAttribute="trailing" constant="-20" id="iTg-ga-EMg"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mc1-M8-I7L" secondAttribute="trailing" id="q7O-1v-Kja"/>
+                            <constraint firstAttribute="trailing" secondItem="OF2-z6-kLx" secondAttribute="trailing" id="rJs-LH-iw4"/>
                             <constraint firstItem="2By-ip-1ca" firstAttribute="top" secondItem="Mc1-M8-I7L" secondAttribute="bottom" constant="19" id="uFW-Nl-CZf"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Mc1-M8-I7L" secondAttribute="leading" id="wQJ-bP-GJ2"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AEF-zs-Krm"/>
+                                <exclude reference="Gk6-qh-hlI"/>
+                                <exclude reference="iTg-ga-EMg"/>
+                                <exclude reference="BNY-Wb-0QH"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="pVq-YB-9JV"/>
                     <connections>
@@ -141,7 +153,7 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_2" translatesAutoresizingMaskIntoConstraints="NO" id="Mec-8I-XCQ">
-                                <rect key="frame" x="0.0" y="472" width="600" height="128"/>
+                                <rect key="frame" x="20" y="472" width="560" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="thI-5U-Ofb"/>
                                 </constraints>
@@ -157,10 +169,18 @@
                             <constraint firstItem="sep-V9-guk" firstAttribute="leading" secondItem="jWN-3C-18C" secondAttribute="leading" id="OuK-1w-xcQ"/>
                             <constraint firstItem="1Aw-RN-KmR" firstAttribute="top" secondItem="Mec-8I-XCQ" secondAttribute="bottom" id="VTC-fs-7k5"/>
                             <constraint firstAttribute="trailing" secondItem="sep-V9-guk" secondAttribute="trailing" id="YCP-fB-dwj"/>
+                            <constraint firstAttribute="trailing" secondItem="Mec-8I-XCQ" secondAttribute="trailing" constant="20" id="Yw2-fX-M79"/>
+                            <constraint firstItem="Mec-8I-XCQ" firstAttribute="leading" secondItem="jWN-3C-18C" secondAttribute="leading" constant="20" id="ZY4-XB-BJa"/>
                             <constraint firstItem="jcC-S6-Wrx" firstAttribute="top" secondItem="cUL-yS-Lgd" secondAttribute="bottom" id="kpg-gd-4HX"/>
                             <constraint firstItem="Mec-8I-XCQ" firstAttribute="top" secondItem="jcC-S6-Wrx" secondAttribute="bottom" constant="2" id="nnx-UY-OmQ"/>
                             <constraint firstItem="jcC-S6-Wrx" firstAttribute="leading" secondItem="sep-V9-guk" secondAttribute="leading" id="rJS-kR-Men"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="89r-I0-iXp"/>
+                                <exclude reference="NKq-so-Ul6"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="logoImage" destination="Mec-8I-XCQ" id="R5Z-Dh-1gd"/>
@@ -244,7 +264,7 @@
                                 </connections>
                             </searchBar>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_2" translatesAutoresizingMaskIntoConstraints="NO" id="E1n-bD-GOJ">
-                                <rect key="frame" x="0.0" y="472" width="600" height="128"/>
+                                <rect key="frame" x="20" y="472" width="560" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="Z9P-JJ-3Lc"/>
                                 </constraints>
@@ -258,15 +278,23 @@
                             <constraint firstAttribute="trailing" secondItem="13y-Ai-gF6" secondAttribute="trailing" id="OgF-t3-bzw"/>
                             <constraint firstItem="mbq-u6-Gt9" firstAttribute="top" secondItem="VNW-Ab-Md7" secondAttribute="bottom" id="QVf-yq-eLd"/>
                             <constraint firstItem="VNW-Ab-Md7" firstAttribute="top" secondItem="Fup-K2-3lc" secondAttribute="bottom" id="Rzq-Zd-pZk"/>
+                            <constraint firstItem="E1n-bD-GOJ" firstAttribute="leading" secondItem="zdc-ha-1hw" secondAttribute="leading" constant="20" id="VWc-3s-PdB"/>
                             <constraint firstItem="mbq-u6-Gt9" firstAttribute="trailing" secondItem="13y-Ai-gF6" secondAttribute="trailing" id="aRB-0H-VHr"/>
                             <constraint firstItem="13y-Ai-gF6" firstAttribute="leading" secondItem="zdc-ha-1hw" secondAttribute="leading" id="are-Kq-Aa6"/>
                             <constraint firstItem="E1n-bD-GOJ" firstAttribute="leading" secondItem="zdc-ha-1hw" secondAttribute="leadingMargin" constant="-20" id="fsg-Kr-eUj"/>
                             <constraint firstItem="nqd-tl-Jkq" firstAttribute="top" secondItem="13y-Ai-gF6" secondAttribute="bottom" id="kFX-CL-8dm"/>
                             <constraint firstItem="13y-Ai-gF6" firstAttribute="top" secondItem="zdc-ha-1hw" secondAttribute="top" id="kbR-b7-aOr"/>
                             <constraint firstItem="E1n-bD-GOJ" firstAttribute="top" secondItem="mbq-u6-Gt9" secondAttribute="bottom" constant="2" id="qFK-QG-ga8"/>
+                            <constraint firstAttribute="trailing" secondItem="E1n-bD-GOJ" secondAttribute="trailing" constant="20" id="qUS-7s-j6o"/>
                             <constraint firstAttribute="trailingMargin" secondItem="E1n-bD-GOJ" secondAttribute="trailing" constant="-20" id="tUh-0S-HjX"/>
                             <constraint firstItem="nqd-tl-Jkq" firstAttribute="top" secondItem="E1n-bD-GOJ" secondAttribute="bottom" id="wKE-fG-WRq"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="fsg-Kr-eUj"/>
+                                <exclude reference="tUh-0S-HjX"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="logoImage" destination="E1n-bD-GOJ" id="XIN-mz-UVn"/>
@@ -345,7 +373,7 @@
                                 </connections>
                             </tableView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_2" translatesAutoresizingMaskIntoConstraints="NO" id="TnQ-tS-IOP">
-                                <rect key="frame" x="0.0" y="472" width="600" height="128"/>
+                                <rect key="frame" x="20" y="472" width="560" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="oOI-xC-e1s"/>
                                 </constraints>
@@ -363,8 +391,16 @@
                             <constraint firstItem="6Nt-qE-2CX" firstAttribute="leading" secondItem="4AV-Vw-f3F" secondAttribute="leading" id="OwE-jZ-ZPK"/>
                             <constraint firstItem="LxV-u9-qh9" firstAttribute="top" secondItem="JxO-Ef-Y9o" secondAttribute="bottom" id="QEi-Ma-Wjj"/>
                             <constraint firstAttribute="trailingMargin" secondItem="TnQ-tS-IOP" secondAttribute="trailing" constant="-20" id="eaK-Mp-Phu"/>
+                            <constraint firstItem="TnQ-tS-IOP" firstAttribute="leading" secondItem="4AV-Vw-f3F" secondAttribute="leading" constant="20" id="r6b-xB-bR0"/>
+                            <constraint firstAttribute="trailing" secondItem="TnQ-tS-IOP" secondAttribute="trailing" constant="20" id="wOA-Ra-KEY"/>
                             <constraint firstAttribute="trailing" secondItem="JxO-Ef-Y9o" secondAttribute="trailing" id="yMK-aK-THd"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Mb5-mA-qPN"/>
+                                <exclude reference="eaK-Mp-Phu"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="logoImage" destination="TnQ-tS-IOP" id="G7m-Uw-xhj"/>
@@ -417,7 +453,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_2" translatesAutoresizingMaskIntoConstraints="NO" id="CVD-XN-f1c">
-                                <rect key="frame" x="0.0" y="472" width="600" height="128"/>
+                                <rect key="frame" x="20" y="472" width="560" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="128" id="8Vp-vX-MPg"/>
                                 </constraints>
@@ -426,6 +462,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Zto-Ek-hBh" firstAttribute="leading" secondItem="Jy7-GQ-ofJ" secondAttribute="leading" id="3vg-Q7-nlR"/>
+                            <constraint firstAttribute="trailing" secondItem="CVD-XN-f1c" secondAttribute="trailing" constant="20" id="Ess-vy-4H0"/>
                             <constraint firstItem="rLP-Gq-6zK" firstAttribute="top" secondItem="vgs-L4-sky" secondAttribute="bottom" id="F3b-cL-Gys"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Vco-lu-kTl" secondAttribute="leading" id="HFh-rE-bI0"/>
                             <constraint firstItem="vgs-L4-sky" firstAttribute="leading" secondItem="Jy7-GQ-ofJ" secondAttribute="leading" id="Jq5-nJ-NPR"/>
@@ -441,7 +478,14 @@
                             <constraint firstAttribute="trailingMargin" secondItem="CVD-XN-f1c" secondAttribute="trailing" constant="-20" id="ewS-eV-63h"/>
                             <constraint firstAttribute="trailingMargin" secondItem="WTp-qV-ihO" secondAttribute="trailing" constant="-7" id="mm3-ep-yxf"/>
                             <constraint firstItem="CVD-XN-f1c" firstAttribute="leading" secondItem="Jy7-GQ-ofJ" secondAttribute="leadingMargin" constant="-20" id="nrg-W1-55h"/>
+                            <constraint firstItem="CVD-XN-f1c" firstAttribute="leading" secondItem="Jy7-GQ-ofJ" secondAttribute="leading" constant="20" id="sP1-1G-kmp"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="ewS-eV-63h"/>
+                                <exclude reference="nrg-W1-55h"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="connectButton" destination="WTp-qV-ihO" id="duS-Bz-V4t"/>
