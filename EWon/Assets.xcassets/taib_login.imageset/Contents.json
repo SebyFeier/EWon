@@ -2,12 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "login-button.png",
+      "filename" : "taib_login.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "login-button@2x.png",
+      "filename" : "taib_login@2x.png",
       "scale" : "2x"
     },
     {

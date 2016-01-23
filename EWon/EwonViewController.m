@@ -14,6 +14,7 @@
 @interface EwonViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 
 @end
 
@@ -22,8 +23,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = logoutButton;
+//    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
+//    self.navigationItem.rightBarButtonItem = logoutButton;
+    
+    UIButton *logoutButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 71, 25) ];
+    [logoutButton setImage:[UIImage imageNamed:@"log_out"] forState:UIControlStateNormal];
+    [logoutButton addTarget:self action:@selector(logoutButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarButtonItem1 = [[UIBarButtonItem alloc]
+                                            initWithCustomView:logoutButton];
+    [rightBarButtonItem1 setTintColor:[UIColor blackColor]];
+    
+    //set the action for button
+    
+    
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem1;
+    UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 61, 25) ];
+    [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarButtonItem1 = [[UIBarButtonItem alloc]
+                                           initWithCustomView:backButton];
+    [leftBarButtonItem1 setTintColor:[UIColor blackColor]];
+    
+    //set the action for button
+    
+    
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem1;
+
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 44)];
     headerView.backgroundColor = [UIColor clearColor];
     UILabel *nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(8, 0, 100, 44)];
@@ -74,14 +99,21 @@
     //    }
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+        self.widthConstraint.constant = 750;
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+        self.widthConstraint.constant = 320;
     }
+    [self.view layoutIfNeeded];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.navigationBarHidden = NO;
+}
+
+- (void)backButtonTapped:(id)sender {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)logoutButtonTapped:(UIButton *)button {

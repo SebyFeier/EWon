@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 @property (weak, nonatomic) IBOutlet UIButton *connectButton;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 
 @end
 
@@ -30,6 +31,19 @@
     self.navigationItem.hidesBackButton = YES;
 //    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
 //    self.navigationItem.rightBarButtonItem = logoutButton;
+    
+    UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 61, 25) ];
+    [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backButton addTarget:self action:@selector(backButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *leftBarButtonItem1 = [[UIBarButtonItem alloc]
+                                            initWithCustomView:backButton];
+    [leftBarButtonItem1 setTintColor:[UIColor blackColor]];
+    
+    //set the action for button
+    
+    
+    self.navigationItem.leftBarButtonItem = leftBarButtonItem1;
+
     self.webView.hidden = YES;
     self.passwordTextField.hidden = NO;
     self.connectButton.hidden = NO;
@@ -41,11 +55,24 @@
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+        self.widthConstraint.constant = 750;
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+        self.widthConstraint.constant = 320;
     }
+    [self.view layoutIfNeeded];
     // Do any additional setup after loading the view.
 }
+
+- (void)backButtonTapped:(id)sender {
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('cancel').click();"];
+//    [self performSelector:@selector(logoutAfterDelay) withObject:nil afterDelay:40];
+}
+
+//- (void)logoutAfterDelay {
+//    [self.navigationController popViewControllerAnimated:YES];
+//
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -135,15 +162,17 @@
             [self.navigationController popViewControllerAnimated:YES];
         }
     } else if ([webViewText rangeOfString:@"internal error"].location != NSNotFound) {
-        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"Internal Error" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+        [[[UIAlertView alloc] initWithTitle:@"Error" message:@"An internal error has occurred within the server, and the connection has been terminated. Maybe the VNC password is wrong." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         self.webView.hidden = YES;
-        [self.navigationController popViewControllerAnimated:YES];
+        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('cancel').click();"];
+
+//        [self.navigationController popViewControllerAnimated:YES];
     } else if ([webViewText rangeOfString:@"Enter VNC password"].location != NSNotFound) {
         [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('regular').style.display = 'inline';"];
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     } else if ([webViewText rangeOfString:@"Welcome"].location != NSNotFound) {
-//        self.webView.hidden = YES;
+        self.webView.hidden = YES;
         [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('userIdentity').getElementsByTagName('a')[0].click();"];
 //        [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('container').style.display = 'none';"];
 

@@ -14,6 +14,7 @@
 @interface AccountInfoViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 
 @end
 
@@ -22,8 +23,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = logoutButton;
+//    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
+//    self.navigationItem.rightBarButtonItem = logoutButton;
+    UIButton *logoutButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 71, 25) ];
+    [logoutButton setImage:[UIImage imageNamed:@"log_out"] forState:UIControlStateNormal];
+    [logoutButton addTarget:self action:@selector(logoutButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarButtonItem1 = [[UIBarButtonItem alloc]
+                                            initWithCustomView:logoutButton];
+    [rightBarButtonItem1 setTintColor:[UIColor blackColor]];
+    
+    //set the action for button
+    
+    
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem1;
+
     
     UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 200)];
     headerView.backgroundColor = [UIColor clearColor];
@@ -66,9 +79,12 @@
     self.tableView.tableHeaderView = headerView;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+        self.widthConstraint.constant = 750;
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+        self.widthConstraint.constant = 320;
     }
+    [self.view layoutIfNeeded];
     // Do any additional setup after loading the view.
 }
 

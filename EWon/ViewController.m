@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *usernameLabel;
 @property (weak, nonatomic) IBOutlet UITextField *passwordLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 
 @end
 
@@ -29,20 +30,12 @@
     self.passwordLabel.text = @"";
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+        self.widthConstraint.constant = 750;
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+        self.widthConstraint.constant = 320;
     }
-//        self.accountLabel.text = @"TAIB automation";
-//        self.usernameLabel.text = @"AlexP";
-//        self.passwordLabel.text = @"Ap123456";
-    
-}
-
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    //    self.accountLabel.text = @"TAIB automation";
-    //    self.usernameLabel.text = @"AlexP";
-    //    self.passwordLabel.text = @"Ap123456";
+    [self.view layoutIfNeeded];
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"account"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"username"] && [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]) {
         [[WebServiceManager sharedInstance] setAccount:[[NSUserDefaults standardUserDefaults] objectForKey:@"account"]];
         [[WebServiceManager sharedInstance] setUsername:[[NSUserDefaults standardUserDefaults] objectForKey:@"username"]];
@@ -328,7 +321,19 @@
             }
         }];
         
-    }    // Do any additional setup after loading the view, typically from a nib.
+    }
+//        self.accountLabel.text = @"TAIB automation";
+//        self.usernameLabel.text = @"AlexP";
+//        self.passwordLabel.text = @"Ap123456";
+    
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    //    self.accountLabel.text = @"TAIB automation";
+    //    self.usernameLabel.text = @"AlexP";
+    //    self.passwordLabel.text = @"Ap123456";
+        // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

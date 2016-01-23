@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIImageView *logoImage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *widthConstraint;
 
 @end
 
@@ -25,14 +26,28 @@
     [super viewDidLoad];
     self.navigationItem.title = @"Instalaciones";
     [self.navigationItem setHidesBackButton:YES];
-    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
-    self.navigationItem.rightBarButtonItem = logoutButton;
+//    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
+//    self.navigationItem.rightBarButtonItem = logoutButton;
+    
+    UIButton *logoutButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 71, 25) ];
+    [logoutButton setImage:[UIImage imageNamed:@"log_out"] forState:UIControlStateNormal];
+    [logoutButton addTarget:self action:@selector(logoutButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
+    UIBarButtonItem *rightBarButtonItem1 = [[UIBarButtonItem alloc]
+                                            initWithCustomView:logoutButton];
+    [rightBarButtonItem1 setTintColor:[UIColor blackColor]];
+    
+    //set the action for button
+    rightBarButtonItem1.action =  @selector(logoutButtonTapped:);
+    self.navigationItem.rightBarButtonItem = rightBarButtonItem1;
     self.searchBar.showsCancelButton = YES;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+        self.widthConstraint.constant = 750;
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+        self.widthConstraint.constant = 320;
     }
+    [self.view layoutIfNeeded];
     // Do any additional setup after loading the view.
 }
 - (void)logoutButtonTapped:(UIButton *)button {
@@ -108,20 +123,25 @@
         [[WebServiceManager sharedInstance] getEwonWithName:nil pool:ewonInfo[@"id"] withCompletionBlock:^(NSDictionary *dictionary, NSError *error) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
             if (dictionary) {
-                if (![[dictionary objectForKey:@"success"] boolValue]) {
-                    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                                   message:dictionary[@"message"]
-                                                                            preferredStyle:UIAlertControllerStyleAlert];
-                    
-                    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                          handler:^(UIAlertAction * action) {}];
-                    
-                    [alert addAction:defaultAction];
-                    [self presentViewController:alert animated:YES completion:nil];
+                if ([[dictionary objectForKey:@"code"] integerValue] == 403) {
+//                    [[[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"%@. Please log in again",dictionary[@"message"]] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+                    [self.navigationController popToRootViewControllerAnimated:YES];
                 } else {
-                    EwonViewController *ewonViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EwonViewControllerIdentifier"];
-                    ewonViewController.ewonInfo = dictionary;
-                    [self.navigationController pushViewController:ewonViewController animated:YES];
+                    if (![[dictionary objectForKey:@"success"] boolValue]) {
+                        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+                                                                                       message:dictionary[@"message"]
+                                                                                preferredStyle:UIAlertControllerStyleAlert];
+                        
+                        UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                                              handler:^(UIAlertAction * action) {}];
+                        
+                        [alert addAction:defaultAction];
+                        [self presentViewController:alert animated:YES completion:nil];
+                    } else {
+                        EwonViewController *ewonViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EwonViewControllerIdentifier"];
+                        ewonViewController.ewonInfo = dictionary;
+                        [self.navigationController pushViewController:ewonViewController animated:YES];
+                    }
                 }
             } else {
                 UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
