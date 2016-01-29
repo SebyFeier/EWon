@@ -26,7 +26,7 @@
 //    UIBarButtonItem *logoutButton = [[UIBarButtonItem alloc] initWithTitle:@"Log Out" style:UIBarButtonItemStylePlain target:self action:@selector(logoutButtonTapped:)];
 //    self.navigationItem.rightBarButtonItem = logoutButton;
     UIButton *logoutButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 71, 25) ];
-    [logoutButton setImage:[UIImage imageNamed:@"log_out"] forState:UIControlStateNormal];
+    [logoutButton setImage:[UIImage imageNamed:@"log_out_slim"] forState:UIControlStateNormal];
     [logoutButton addTarget:self action:@selector(logoutButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightBarButtonItem1 = [[UIBarButtonItem alloc]
                                             initWithCustomView:logoutButton];
@@ -78,8 +78,11 @@
     
     self.tableView.tableHeaderView = headerView;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
-        self.widthConstraint.constant = 750;
+//        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+//        self.widthConstraint.constant = 750;
+        
+        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+        self.widthConstraint.constant = 320;
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
         self.widthConstraint.constant = 320;

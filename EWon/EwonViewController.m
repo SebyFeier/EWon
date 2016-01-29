@@ -27,7 +27,7 @@
 //    self.navigationItem.rightBarButtonItem = logoutButton;
     
     UIButton *logoutButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 71, 25) ];
-    [logoutButton setImage:[UIImage imageNamed:@"log_out"] forState:UIControlStateNormal];
+    [logoutButton setImage:[UIImage imageNamed:@"log_out_slim"] forState:UIControlStateNormal];
     [logoutButton addTarget:self action:@selector(logoutButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *rightBarButtonItem1 = [[UIBarButtonItem alloc]
                                             initWithCustomView:logoutButton];
@@ -38,7 +38,7 @@
     
     self.navigationItem.rightBarButtonItem = rightBarButtonItem1;
     UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 61, 25) ];
-    [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"back_slim"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBarButtonItem1 = [[UIBarButtonItem alloc]
                                            initWithCustomView:backButton];
@@ -98,8 +98,11 @@
 //        [self.actionButton setTitle:@"Wake Up" forState:UIControlStateNormal];
     //    }
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
-        self.widthConstraint.constant = 750;
+//        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+//        self.widthConstraint.constant = 750;
+        
+        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+        self.widthConstraint.constant = 320;
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
         self.widthConstraint.constant = 320;

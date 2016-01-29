@@ -33,7 +33,7 @@
 //    self.navigationItem.rightBarButtonItem = logoutButton;
     
     UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 61, 25) ];
-    [backButton setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"back_slim"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBarButtonItem1 = [[UIBarButtonItem alloc]
                                             initWithCustomView:backButton];
@@ -54,8 +54,11 @@
     isPasswordEnabled = NO;
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
-        self.widthConstraint.constant = 750;
+//        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+//        self.widthConstraint.constant = 750;
+        
+        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+        self.widthConstraint.constant = 320;
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
         self.widthConstraint.constant = 320;
@@ -65,21 +68,24 @@
 }
 
 - (void)backButtonTapped:(id)sender {
+    self.webView.hidden = YES;
+    [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('userIdentity').getElementsByTagName('a')[0].click();"];
     [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('cancel').click();"];
-//    [self performSelector:@selector(logoutAfterDelay) withObject:nil afterDelay:40];
+    [self performSelector:@selector(logoutAfterDelay) withObject:nil afterDelay:1];
 }
 
-//- (void)logoutAfterDelay {
-//    [self.navigationController popViewControllerAnimated:YES];
-//
-//}
+- (void)logoutAfterDelay {
+    [self.navigationController popViewControllerAnimated:YES];
+
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)connectButtonTapped:(id)sender {
-    [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById('vncpasswordeWon bise clima40615').value = '%@'", @"clima01"]];
+    [self.view endEditing:YES];
+    NSString *password = [self.webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"document.getElementById('vncpasswordeWon bise clima40615').value = '%@'", self.passwordTextField.text]];
     isPasswordEnabled = YES;
     [self.webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('connect').click();"];
     [MBProgressHUD showHUDAddedTo:self.view  animated:YES];
@@ -134,7 +140,7 @@
         self.passwordTextField.hidden = YES;
         self.connectButton.hidden = YES;
         self.logoImage.hidden = YES;
-        self.navigationController.navigationBarHidden = YES;
+//        self.navigationController.navigationBarHidden = YES;
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     } else {
         self.webView.hidden = YES;
@@ -180,9 +186,9 @@
 }
 
 
-//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-//    return YES;
-//}
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
+    return YES;
+}
 
 /*
 #pragma mark - Navigation

@@ -29,8 +29,11 @@
     self.usernameLabel.text = @"";
     self.passwordLabel.text = @"";
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
-        self.widthConstraint.constant = 750;
+//        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
+//        self.widthConstraint.constant = 750;
+        
+        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
+        self.widthConstraint.constant = 320;
     } else {
         [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
         self.widthConstraint.constant = 320;
