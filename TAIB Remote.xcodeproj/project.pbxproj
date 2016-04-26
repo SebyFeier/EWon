@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		099AB677CF0EBBD3BF3D46AF /* libPods-EWon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C26F7D33B1DCDE05671AA99 /* libPods-EWon.a */; };
 		F103359D1C0F5F7C0034AB5F /* WebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F103359C1C0F5F7C0034AB5F /* WebViewViewController.m */; };
+		F1975BFC1C6924D800FA19BD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1975BFB1C6924D800FA19BD /* MessageUI.framework */; };
 		F1A952901C0211100009323E /* AccountInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A9528F1C0211100009323E /* AccountInfoViewController.m */; };
 		F1A952931C0218DD0009323E /* EwonListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A952921C0218DD0009323E /* EwonListViewController.m */; };
 		F1A952961C0219570009323E /* EwonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A952951C0219570009323E /* EwonViewController.m */; };
 		F1A952991C021CA80009323E /* EwonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F1A952981C021CA80009323E /* EwonTableViewCell.m */; };
+		F1BD50621C6913590032B497 /* ContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1BD50611C6913590032B497 /* ContactViewController.m */; };
 		F1EB81A11C004A2600BB39ED /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EB81A01C004A2600BB39ED /* main.m */; };
 		F1EB81A41C004A2600BB39ED /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EB81A31C004A2600BB39ED /* AppDelegate.m */; };
 		F1EB81A71C004A2600BB39ED /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F1EB81A61C004A2600BB39ED /* ViewController.m */; };
@@ -47,6 +49,7 @@
 		B4E076F4218BB496E834695B /* Pods-EWon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EWon.release.xcconfig"; path = "Pods/Target Support Files/Pods-EWon/Pods-EWon.release.xcconfig"; sourceTree = "<group>"; };
 		F103359B1C0F5F7C0034AB5F /* WebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewViewController.h; sourceTree = "<group>"; };
 		F103359C1C0F5F7C0034AB5F /* WebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewViewController.m; sourceTree = "<group>"; };
+		F1975BFB1C6924D800FA19BD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		F1A9528E1C0211100009323E /* AccountInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountInfoViewController.h; sourceTree = "<group>"; };
 		F1A9528F1C0211100009323E /* AccountInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountInfoViewController.m; sourceTree = "<group>"; };
 		F1A952911C0218DD0009323E /* EwonListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EwonListViewController.h; sourceTree = "<group>"; };
@@ -55,7 +58,9 @@
 		F1A952951C0219570009323E /* EwonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EwonViewController.m; sourceTree = "<group>"; };
 		F1A952971C021CA80009323E /* EwonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EwonTableViewCell.h; sourceTree = "<group>"; };
 		F1A952981C021CA80009323E /* EwonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EwonTableViewCell.m; sourceTree = "<group>"; };
-		F1EB819C1C004A2600BB39ED /* TAIB Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TAIB Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1BD50601C6913590032B497 /* ContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContactViewController.h; sourceTree = "<group>"; };
+		F1BD50611C6913590032B497 /* ContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContactViewController.m; sourceTree = "<group>"; };
+		F1EB819C1C004A2600BB39ED /* TAIB remote.temp_caseinsensitive_rename.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TAIB remote.temp_caseinsensitive_rename.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EB81A01C004A2600BB39ED /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		F1EB81A21C004A2600BB39ED /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		F1EB81A31C004A2600BB39ED /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -65,10 +70,10 @@
 		F1EB81AB1C004A2600BB39ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F1EB81AE1C004A2600BB39ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F1EB81B01C004A2600BB39ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1EB81B51C004A2600BB39ED /* TAIB Remote.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TAIB Remote.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1EB81B51C004A2600BB39ED /* TAIB remote.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TAIB remote.temp_caseinsensitive_rename.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EB81B91C004A2600BB39ED /* EWonTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWonTests.m; sourceTree = "<group>"; };
 		F1EB81BB1C004A2600BB39ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F1EB81C01C004A2600BB39ED /* TAIB Remote.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TAIB Remote.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1EB81C01C004A2600BB39ED /* TAIB remote.temp_caseinsensitive_rename.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "TAIB remote.temp_caseinsensitive_rename.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F1EB81C41C004A2600BB39ED /* EWonUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EWonUITests.m; sourceTree = "<group>"; };
 		F1EB81C61C004A2600BB39ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F1EB81D21C004C7E00BB39ED /* WebServiceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebServiceManager.h; sourceTree = "<group>"; };
@@ -80,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1975BFC1C6924D800FA19BD /* MessageUI.framework in Frameworks */,
 				099AB677CF0EBBD3BF3D46AF /* libPods-EWon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +110,7 @@
 		0AC77FCDEDBF00592E9C5948 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1975BFB1C6924D800FA19BD /* MessageUI.framework */,
 				3C26F7D33B1DCDE05671AA99 /* libPods-EWon.a */,
 			);
 			name = Frameworks;
@@ -133,9 +140,9 @@
 		F1EB819D1C004A2600BB39ED /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F1EB819C1C004A2600BB39ED /* TAIB Remote.app */,
-				F1EB81B51C004A2600BB39ED /* TAIB Remote.xctest */,
-				F1EB81C01C004A2600BB39ED /* TAIB Remote.xctest */,
+				F1EB819C1C004A2600BB39ED /* TAIB remote.temp_caseinsensitive_rename.app */,
+				F1EB81B51C004A2600BB39ED /* TAIB remote.temp_caseinsensitive_rename.xctest */,
+				F1EB81C01C004A2600BB39ED /* TAIB remote.temp_caseinsensitive_rename.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,6 +167,8 @@
 				F1A952981C021CA80009323E /* EwonTableViewCell.m */,
 				F1A9528E1C0211100009323E /* AccountInfoViewController.h */,
 				F1A9528F1C0211100009323E /* AccountInfoViewController.m */,
+				F1BD50601C6913590032B497 /* ContactViewController.h */,
+				F1BD50611C6913590032B497 /* ContactViewController.m */,
 				F1EB81AB1C004A2600BB39ED /* Assets.xcassets */,
 				F1EB81AD1C004A2600BB39ED /* LaunchScreen.storyboard */,
 				F1EB81B01C004A2600BB39ED /* Info.plist */,
@@ -215,7 +224,7 @@
 			);
 			name = "TAIB Remote";
 			productName = EWon;
-			productReference = F1EB819C1C004A2600BB39ED /* TAIB Remote.app */;
+			productReference = F1EB819C1C004A2600BB39ED /* TAIB remote.temp_caseinsensitive_rename.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F1EB81B41C004A2600BB39ED /* TAIB RemoteTests */ = {
@@ -233,7 +242,7 @@
 			);
 			name = "TAIB RemoteTests";
 			productName = EWonTests;
-			productReference = F1EB81B51C004A2600BB39ED /* TAIB Remote.xctest */;
+			productReference = F1EB81B51C004A2600BB39ED /* TAIB remote.temp_caseinsensitive_rename.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		F1EB81BF1C004A2600BB39ED /* TAIB RemoteUITests */ = {
@@ -251,7 +260,7 @@
 			);
 			name = "TAIB RemoteUITests";
 			productName = EWonUITests;
-			productReference = F1EB81C01C004A2600BB39ED /* TAIB Remote.xctest */;
+			productReference = F1EB81C01C004A2600BB39ED /* TAIB remote.temp_caseinsensitive_rename.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -276,7 +285,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F1EB81971C004A2500BB39ED /* Build configuration list for PBXProject "TAIB Remote" */;
+			buildConfigurationList = F1EB81971C004A2500BB39ED /* Build configuration list for PBXProject "TAIB remote" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -394,6 +403,7 @@
 				F1A952991C021CA80009323E /* EwonTableViewCell.m in Sources */,
 				F1A952901C0211100009323E /* AccountInfoViewController.m in Sources */,
 				F1EB81A41C004A2600BB39ED /* AppDelegate.m in Sources */,
+				F1BD50621C6913590032B497 /* ContactViewController.m in Sources */,
 				F1EB81A11C004A2600BB39ED /* main.m in Sources */,
 				F103359D1C0F5F7C0034AB5F /* WebViewViewController.m in Sources */,
 				F1A952931C0218DD0009323E /* EwonListViewController.m in Sources */,
@@ -469,8 +479,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pop Alexandru (777M6JB42M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pop Alexandru (SJH333H8EX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pop Alexandru (SJH333H8EX)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -492,7 +502,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
+				PROVISIONING_PROFILE = "d99e9540-1528-436a-843f-604334ea4d1b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -515,8 +525,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Pop Alexandru (777M6JB42M)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Pop Alexandru (777M6JB42M)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Pop Alexandru (SJH333H8EX)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Pop Alexandru (SJH333H8EX)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -531,7 +541,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
+				PROVISIONING_PROFILE = "d99e9540-1528-436a-843f-604334ea4d1b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -548,7 +558,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.talk2m.ewon;
-				PRODUCT_NAME = "TAIB Remote";
+				PRODUCT_NAME = "TAIB remote.temp_caseinsensitive_rename";
 				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
 			};
 			name = Debug;
@@ -563,7 +573,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.talk2m.ewon;
-				PRODUCT_NAME = "TAIB Remote";
+				PRODUCT_NAME = "TAIB remote.temp_caseinsensitive_rename";
 				PROVISIONING_PROFILE = "e30f0306-2784-47f8-8ce9-561d0ddf7180";
 			};
 			name = Release;
@@ -575,8 +585,8 @@
 				INFOPLIST_FILE = EWonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Work.EWonTests;
-				PRODUCT_NAME = "TAIB Remote";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TAIB Remote.app/TAIB Remote";
+				PRODUCT_NAME = "TAIB remote.temp_caseinsensitive_rename";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TAIB remote.temp_caseinsensitive_rename.app/TAIB remote.temp_caseinsensitive_rename";
 			};
 			name = Debug;
 		};
@@ -587,8 +597,8 @@
 				INFOPLIST_FILE = EWonTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Work.EWonTests;
-				PRODUCT_NAME = "TAIB Remote";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TAIB Remote.app/TAIB Remote";
+				PRODUCT_NAME = "TAIB remote.temp_caseinsensitive_rename";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TAIB remote.temp_caseinsensitive_rename.app/TAIB remote.temp_caseinsensitive_rename";
 			};
 			name = Release;
 		};
@@ -598,7 +608,7 @@
 				INFOPLIST_FILE = EWonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Work.EWonUITests;
-				PRODUCT_NAME = "TAIB Remote";
+				PRODUCT_NAME = "TAIB remote.temp_caseinsensitive_rename";
 				TEST_TARGET_NAME = EWon;
 				USES_XCTRUNNER = YES;
 			};
@@ -610,7 +620,7 @@
 				INFOPLIST_FILE = EWonUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = Work.EWonUITests;
-				PRODUCT_NAME = "TAIB Remote";
+				PRODUCT_NAME = "TAIB remote.temp_caseinsensitive_rename";
 				TEST_TARGET_NAME = EWon;
 				USES_XCTRUNNER = YES;
 			};
@@ -619,7 +629,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F1EB81971C004A2500BB39ED /* Build configuration list for PBXProject "TAIB Remote" */ = {
+		F1EB81971C004A2500BB39ED /* Build configuration list for PBXProject "TAIB remote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F1EB81C71C004A2600BB39ED /* Debug */,

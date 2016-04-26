@@ -52,4 +52,13 @@ typedef void(^DictionaryAndErrorCompletionBlock)(NSDictionary *dictionary, NSErr
                       port:(NSString *)port
                       name:(NSString *)name;
 
+- (void)getNumberOfDaysWithUUid:(NSString *)uuid
+                    andUsername:(NSString *)username
+            withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
+
+- (void)contactOwnerWithUsername:(NSString *)email
+                  andPhoneNumber:(NSString *)phoneNumber
+                         andUuid:(NSString *)uuid
+             withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock;
+
 @end

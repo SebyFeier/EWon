@@ -81,11 +81,11 @@
 //        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
 //        self.widthConstraint.constant = 750;
         
-        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
-        self.widthConstraint.constant = 320;
+        [self.logoImage setImage:[UIImage imageNamed:@"logo2"]];
+        self.widthConstraint.constant = 210;
     } else {
-        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
-        self.widthConstraint.constant = 320;
+        [self.logoImage setImage:[UIImage imageNamed:@"logo2"]];
+        self.widthConstraint.constant = 210;
     }
     [self.view layoutIfNeeded];
     // Do any additional setup after loading the view.
@@ -97,28 +97,32 @@
         [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         if (dictionary) {
             if (![[dictionary objectForKey:@"success"] boolValue]) {
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                               message:dictionary[@"message"]
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                      handler:^(UIAlertAction * action) {}];
-                
-                [alert addAction:defaultAction];
-                [self presentViewController:alert animated:YES completion:nil];
+//                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                               message:dictionary[@"message"]
+//                                                                        preferredStyle:UIAlertControllerStyleAlert];
+//                
+//                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                      handler:^(UIAlertAction * action) {}];
+//                
+//                [alert addAction:defaultAction];
+//                [self presentViewController:alert animated:YES completion:nil];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:dictionary[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
             } else {
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
         } else {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:[error localizedDescription]
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
+//            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                           message:[error localizedDescription]
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                  handler:^(UIAlertAction * action) {}];
+//            
+//            [alert addAction:defaultAction];
+//            [self presentViewController:alert animated:YES completion:nil];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
         }
     }];
 }
@@ -157,30 +161,34 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (dictionary) {
             if (![[dictionary objectForKey:@"success"] boolValue]) {
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                               message:dictionary[@"message"]
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                      handler:^(UIAlertAction * action) {}];
-                
-                [alert addAction:defaultAction];
-                [self presentViewController:alert animated:YES completion:nil];
+//                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                               message:dictionary[@"message"]
+//                                                                        preferredStyle:UIAlertControllerStyleAlert];
+//                
+//                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                      handler:^(UIAlertAction * action) {}];
+//                
+//                [alert addAction:defaultAction];
+//                [self presentViewController:alert animated:YES completion:nil];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:dictionary[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
             } else {
                 EwonListViewController *ewonListViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EwonListViewControllerIdentifier"];
                 ewonListViewController.ewonsList = dictionary;
                 [self.navigationController pushViewController:ewonListViewController animated:YES];
             }
         } else {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:[error localizedDescription]
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
+//            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                           message:[error localizedDescription]
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                  handler:^(UIAlertAction * action) {}];
+//            
+//            [alert addAction:defaultAction];
+//            [self presentViewController:alert animated:YES completion:nil];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
         }
     }];
 }

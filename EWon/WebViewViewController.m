@@ -33,7 +33,7 @@
 //    self.navigationItem.rightBarButtonItem = logoutButton;
     
     UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 61, 25) ];
-    [backButton setImage:[UIImage imageNamed:@"back_slim"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"back-slim"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBarButtonItem1 = [[UIBarButtonItem alloc]
                                             initWithCustomView:backButton];
@@ -57,11 +57,11 @@
 //        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
 //        self.widthConstraint.constant = 750;
         
-        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
-        self.widthConstraint.constant = 320;
+        [self.logoImage setImage:[UIImage imageNamed:@"logo2"]];
+        self.widthConstraint.constant = 210;
     } else {
-        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
-        self.widthConstraint.constant = 320;
+        [self.logoImage setImage:[UIImage imageNamed:@"logo2"]];
+        self.widthConstraint.constant = 210;
     }
     [self.view layoutIfNeeded];
     // Do any additional setup after loading the view.

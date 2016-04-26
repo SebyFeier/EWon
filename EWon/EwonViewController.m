@@ -38,7 +38,7 @@
     
     self.navigationItem.rightBarButtonItem = rightBarButtonItem1;
     UIButton *backButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 61, 25) ];
-    [backButton setImage:[UIImage imageNamed:@"back_slim"] forState:UIControlStateNormal];
+    [backButton setImage:[UIImage imageNamed:@"back-slim"] forState:UIControlStateNormal];
     [backButton addTarget:self action:@selector(backButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     UIBarButtonItem *leftBarButtonItem1 = [[UIBarButtonItem alloc]
                                            initWithCustomView:backButton];
@@ -101,11 +101,11 @@
 //        [self.logoImage setImage:[UIImage imageNamed:@"logo_2"]];
 //        self.widthConstraint.constant = 750;
         
-        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
-        self.widthConstraint.constant = 320;
+        [self.logoImage setImage:[UIImage imageNamed:@"logo2"]];
+        self.widthConstraint.constant = 210;
     } else {
-        [self.logoImage setImage:[UIImage imageNamed:@"taib-logo"]];
-        self.widthConstraint.constant = 320;
+        [self.logoImage setImage:[UIImage imageNamed:@"logo2"]];
+        self.widthConstraint.constant = 210;
     }
     [self.view layoutIfNeeded];
 }
@@ -125,28 +125,32 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (dictionary) {
             if (![[dictionary objectForKey:@"success"] boolValue]) {
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                               message:dictionary[@"message"]
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                      handler:^(UIAlertAction * action) {}];
-                
-                [alert addAction:defaultAction];
-                [self presentViewController:alert animated:YES completion:nil];
+//                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                               message:dictionary[@"message"]
+//                                                                        preferredStyle:UIAlertControllerStyleAlert];
+//                
+//                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                      handler:^(UIAlertAction * action) {}];
+//                
+//                [alert addAction:defaultAction];
+//                [self presentViewController:alert animated:YES completion:nil];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:dictionary[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
             } else {
                 [self.navigationController popToRootViewControllerAnimated:YES];
             }
         } else {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:[error localizedDescription]
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
+//            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                           message:[error localizedDescription]
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                  handler:^(UIAlertAction * action) {}];
+//            
+//            [alert addAction:defaultAction];
+//            [self presentViewController:alert animated:YES completion:nil];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
         }
     }];
 }
@@ -156,30 +160,34 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (dictionary) {
             if (![[dictionary objectForKey:@"success"] boolValue]) {
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                               message:dictionary[@"message"]
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                      handler:^(UIAlertAction * action) {}];
-                
-                [alert addAction:defaultAction];
-                [self presentViewController:alert animated:YES completion:nil];
+//                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                               message:dictionary[@"message"]
+//                                                                        preferredStyle:UIAlertControllerStyleAlert];
+//                
+//                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                      handler:^(UIAlertAction * action) {}];
+//                
+//                [alert addAction:defaultAction];
+//                [self presentViewController:alert animated:YES completion:nil];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:dictionary[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
             } else {
                 //            EwonViewController *ewonViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EwonViewControllerIdentifier"];
                 //            ewonViewController.ewonInfo = dictionary;
                 //            [self.navigationController pushViewController:ewonViewController animated:YES];
             }
         } else {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:[error localizedDescription]
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
+//            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                           message:[error localizedDescription]
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                  handler:^(UIAlertAction * action) {}];
+//            
+//            [alert addAction:defaultAction];
+//            [self presentViewController:alert animated:YES completion:nil];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
         }
     }];
 }
@@ -190,30 +198,34 @@
         [MBProgressHUD hideHUDForView:self.view animated:YES];
         if (dictionary) {
             if (![[dictionary objectForKey:@"success"] boolValue]) {
-                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                               message:dictionary[@"message"]
-                                                                        preferredStyle:UIAlertControllerStyleAlert];
-                
-                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                      handler:^(UIAlertAction * action) {}];
-                
-                [alert addAction:defaultAction];
-                [self presentViewController:alert animated:YES completion:nil];
+//                UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                               message:dictionary[@"message"]
+//                                                                        preferredStyle:UIAlertControllerStyleAlert];
+//                
+//                UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                      handler:^(UIAlertAction * action) {}];
+//                
+//                [alert addAction:defaultAction];
+//                [self presentViewController:alert animated:YES completion:nil];
+                [[[UIAlertView alloc] initWithTitle:@"Error" message:dictionary[@"message"] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
             } else {
                 //            EwonViewController *ewonViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"EwonViewControllerIdentifier"];
                 //            ewonViewController.ewonInfo = dictionary;
                 //            [self.navigationController pushViewController:ewonViewController animated:YES];
             }
         } else {
-            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                           message:[error localizedDescription]
-                                                                    preferredStyle:UIAlertControllerStyleAlert];
-            
-            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                                  handler:^(UIAlertAction * action) {}];
-            
-            [alert addAction:defaultAction];
-            [self presentViewController:alert animated:YES completion:nil];
+//            UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Error"
+//                                                                           message:[error localizedDescription]
+//                                                                    preferredStyle:UIAlertControllerStyleAlert];
+//            
+//            UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+//                                                                  handler:^(UIAlertAction * action) {}];
+//            
+//            [alert addAction:defaultAction];
+//            [self presentViewController:alert animated:YES completion:nil];
+            [[[UIAlertView alloc] initWithTitle:@"Error" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil] show];
+
         }
     }];
 }

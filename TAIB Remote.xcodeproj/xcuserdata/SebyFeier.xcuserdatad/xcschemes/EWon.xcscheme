@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F1EB819B1C004A2500BB39ED"
-               BuildableName = "TAIB Remote.app"
+               BuildableName = "TAIB remote.temp_caseinsensitive_rename.app"
                BlueprintName = "TAIB Remote"
-               ReferencedContainer = "container:TAIB Remote.xcodeproj">
+               ReferencedContainer = "container:TAIB remote.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F1EB81B41C004A2600BB39ED"
-               BuildableName = "TAIB Remote.xctest"
+               BuildableName = "TAIB remote.temp_caseinsensitive_rename.xctest"
                BlueprintName = "TAIB RemoteTests"
-               ReferencedContainer = "container:TAIB Remote.xcodeproj">
+               ReferencedContainer = "container:TAIB remote.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -43,9 +43,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "F1EB81BF1C004A2600BB39ED"
-               BuildableName = "TAIB Remote.xctest"
+               BuildableName = "TAIB remote.temp_caseinsensitive_rename.xctest"
                BlueprintName = "TAIB RemoteUITests"
-               ReferencedContainer = "container:TAIB Remote.xcodeproj">
+               ReferencedContainer = "container:TAIB remote.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -53,9 +53,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F1EB819B1C004A2500BB39ED"
-            BuildableName = "TAIB Remote.app"
+            BuildableName = "TAIB remote.temp_caseinsensitive_rename.app"
             BlueprintName = "TAIB Remote"
-            ReferencedContainer = "container:TAIB Remote.xcodeproj">
+            ReferencedContainer = "container:TAIB remote.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F1EB819B1C004A2500BB39ED"
-            BuildableName = "TAIB Remote.app"
+            BuildableName = "TAIB remote.temp_caseinsensitive_rename.app"
             BlueprintName = "TAIB Remote"
-            ReferencedContainer = "container:TAIB Remote.xcodeproj">
+            ReferencedContainer = "container:TAIB remote.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -95,9 +95,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "F1EB819B1C004A2500BB39ED"
-            BuildableName = "TAIB Remote.app"
+            BuildableName = "TAIB remote.temp_caseinsensitive_rename.app"
             BlueprintName = "TAIB Remote"
-            ReferencedContainer = "container:TAIB Remote.xcodeproj">
+            ReferencedContainer = "container:TAIB remote.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

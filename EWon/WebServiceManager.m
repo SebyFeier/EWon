@@ -12,6 +12,7 @@
 #define kTWebServiceForEndpoint(endpoint) [WebServiceUrl stringByAppendingPathComponent:endpoint]
 
 NSString *const WebServiceUrl = @"https://m2web.talk2m.com";
+NSString *const TAIBWebServiceUrl = @"http://taib.boxnets.com";
 NSString *const WebServiceLogin = @"login";
 
 NSString *const WebServiceDeveloperId = @"F3E469A5-577F-1D7B-FC0C-B42C4ED11537";
@@ -249,6 +250,51 @@ NSString *const WebServiceDeveloperId = @"F3E469A5-577F-1D7B-FC0C-B42C4ED11537";
     }];
     [operation start];
     
+}
+
+- (void)getNumberOfDaysWithUUid:(NSString *)uuid
+                    andUsername:(NSString *)username
+            withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
+    NSString *urlString = [NSString stringWithFormat:@"users?uuid=%@&ewon_username=%@",uuid, username];
+    NSURL *url = [NSURL URLWithString:TAIBWebServiceUrl];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setStringEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+                                                            path:urlString
+                                                      parameters:nil];
+    NSLog(@"URL %@",request.URL);
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/octet-stream",@"application/json",@"text/plain", @"text/html", nil]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        completionBlock(JSON, nil);
+        NSLog(@"%@",JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        completionBlock(JSON, error);
+    }];
+    [operation start];
+
+}
+
+- (void)contactOwnerWithUsername:(NSString *)email
+                  andPhoneNumber:(NSString *)phoneNumber
+                         andUuid:(NSString *)uuid
+             withCompletionBlock:(DictionaryAndErrorCompletionBlock)completionBlock {
+    
+    NSString *urlString = [NSString stringWithFormat:@"contact_for_pro?uuid=%@&ewon_username=%@&email=%@&phone=%@", uuid, self.username, email, phoneNumber];
+    NSURL *url = [NSURL URLWithString:TAIBWebServiceUrl];
+    AFHTTPClient *httpClient = [[AFHTTPClient alloc] initWithBaseURL:url];
+    [httpClient setStringEncoding:NSUTF8StringEncoding];
+    NSMutableURLRequest *request = [httpClient requestWithMethod:@"GET"
+                                                            path:urlString
+                                                      parameters:nil];
+    NSLog(@"URL %@",request.URL);
+    [AFJSONRequestOperation addAcceptableContentTypes:[NSSet setWithObjects:@"application/octet-stream",@"application/json",@"text/plain", @"text/html", nil]];
+    AFJSONRequestOperation *operation = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON) {
+        completionBlock(JSON, nil);
+        NSLog(@"%@",JSON);
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id JSON) {
+        completionBlock(JSON, error);
+    }];
+    [operation start];
 }
 
 - (NSURL *)reachEwonWithIp:(NSString *)ip
